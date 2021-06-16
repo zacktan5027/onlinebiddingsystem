@@ -1,10 +1,8 @@
 <?php
-require_once('include/conn.php');
+require_once "include/conn.php";
 
 $email = $_GET['email'];
 $vkey = $_GET['vkey'];
-
-// Try and connect using the info above.
 
 $query = "SELECT * FROM user WHERE verification_key ='" . $vkey . "' AND email = '" . $email . "' ";
 $result = mysqli_query($conn, $query);
@@ -31,12 +29,8 @@ if ($result) {
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Header Start -->
 
-    <?php include('header.php'); ?>
-
-    <!-- Header Close -->
-
+    <?php include 'header.php' ?>
 
     <section class="section">
         <div class="container">
