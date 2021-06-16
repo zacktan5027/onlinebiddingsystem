@@ -85,12 +85,12 @@ require_once "include/conn.php";
             </header>
             <div class="d-flex justify-content-around flex-wrap align-content-around">
                 <?php
-
                 $query = "SELECT * FROM `category`";
                 $sql = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_array($sql)) {
                 ?>
-                    <a class="category-item" href="items.php?category=<?= $row["categoryID"] ?>"><img class="img-fluid rounded m-2 shadow bg-body rounded" src="https://image.freepik.com/free-vector/yellow-background-with-dynamic-abstract-shapes_1393-144.jpg" alt="" width="200px" /><strong class="category-item-title"><?= $row["category_name"] ?></strong></a>
+                    <a class="category-item" href="items.php?category=<?= $row["categoryID"] ?>">
+                        <img class="img-fluid rounded m-2 shadow bg-body rounded" src="https://image.freepik.com/free-vector/yellow-background-with-dynamic-abstract-shapes_1393-144.jpg" alt="" width="200px" /><strong class="category-item-title"><?= $row["category_name"] ?></strong></a>
                 <?php
                 }
                 ?>
@@ -105,7 +105,6 @@ require_once "include/conn.php";
             </header>
             <div class="row">
                 <?php
-
                 $sql = $conn->query("SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start' AND item_status=1 GROUP BY item.itemID ORDER BY popular DESC LIMIT 8");
                 $items = [];
                 while ($row = $sql->fetch_array()) {
@@ -124,11 +123,9 @@ require_once "include/conn.php";
                 }
 
                 foreach ($items as $item) {
-
                     $itemID = $item['itemID'];
                     $sql = $conn->query("select * from item_picture WHERE itemID=$itemID limit 1");
                     $row = $sql->fetch_array();
-
                 ?>
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="product text-center">
