@@ -1,3 +1,8 @@
+/**
+ * This funtion is use to restrict the input of alphabatical characters in postcode field.
+ *
+ * @param  {} "#postcode"
+ */
 $("#postcode").keypress(function (e) {
   //if the letter is not digit then display error and don't type anything
   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -6,7 +11,11 @@ $("#postcode").keypress(function (e) {
     return false;
   }
 });
-
+/**
+ * This funtion is use to restrict the input of alphabatical characters in phone number field
+ *
+ * @param  {} "#phoneNumber"
+ */
 $("#phoneNumber").keypress(function (e) {
   //if the letter is not digit then display error and don't type anything
   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -25,6 +34,11 @@ let postcode = document.querySelector("#postcode");
 let state = document.querySelector("#state");
 let phoneNumber = document.querySelector("#phoneNumber");
 
+/**
+ * This function is used to disable all the field if the user click the address badge
+ *
+ * @param  {} button
+ */
 function selectAddress(button) {
   customerName.value = button.querySelector("#savedCustomerName").innerHTML;
   address1.value = button.querySelector("#savedAddress1").innerHTML;
@@ -42,7 +56,10 @@ function selectAddress(button) {
   state.disabled = true;
   phoneNumber.readOnly = true;
 }
-
+/**
+ * This function is used to clear the form
+ *
+ */
 function clearForm() {
   customerName.value = "";
   address1.value = "";
@@ -61,6 +78,9 @@ function clearForm() {
   phoneNumber.removeAttribute("readonly");
 }
 
+/**
+ * This function is used to prompt user whether to save the address input
+ */
 function saveAddress() {
   if ($("#customerName").attr("readonly") === undefined) {
     let decision = confirm("Do you want to save this address?");
@@ -72,6 +92,9 @@ function saveAddress() {
   }
 }
 
+/**
+ * This JavaScript is to make the phone number look better
+ */
 phoneNumber.onkeyup = function () {
   let phone_number = phoneNumber.value;
   phone_number = phone_number.replace(/[^0-9]/g, "");
