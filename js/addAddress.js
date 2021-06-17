@@ -109,6 +109,9 @@ function checkAddress(form) {
   let address1 = form.querySelector("#address1").value.trim();
   let address2 = form.querySelector("#address2").value.trim();
   let city = form.querySelector("#city").value.trim();
+  let state = form.querySelector("#state").value.trim();
+  let postcode = form.querySelector("#postcode").value.trim();
+  let phoneNumber = form.querySelector("#phoneNumber").value.trim();
 
   let emptyField = "";
   let filled = true;
@@ -131,6 +134,21 @@ function checkAddress(form) {
   if (city === "") {
     emptyField += ", city ";
     form.querySelector("#city").value = "";
+    filled = false;
+  }
+  if (state === "") {
+    emptyField += ", state ";
+    form.querySelector("#state").value = "";
+    filled = false;
+  }
+  if (postcode === "") {
+    emptyField += ", postcode ";
+    form.querySelector("#postcode").value = "";
+    filled = false;
+  }
+  if (phoneNumber === "") {
+    emptyField += ", phone number ";
+    form.querySelector("#phoneNumber").value = "";
     filled = false;
   }
 
