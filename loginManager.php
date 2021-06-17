@@ -40,7 +40,7 @@ if (isset($_POST["login"])) {
                 window.location.href='staff/index.php';
                 </script>");
                 } else {
-                    $_SESSION["user"] = true;
+                    $_SESSION["normal"] = true;
                     echo ("<script>
                 window.location.href='user/index.php';
                 </script>");
