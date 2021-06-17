@@ -24,7 +24,6 @@ if (mysqli_num_rows($query) <= 0) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
