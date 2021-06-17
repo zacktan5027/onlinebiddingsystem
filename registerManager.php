@@ -3,13 +3,13 @@
 require_once "include/conn.php";
 
 if (isset($_POST["register"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirmPassword"];
-    $email = $_POST["email"];
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $phoneNumber = $_POST["phoneNumber"];
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+    $confirmPassword = trim($_POST["confirmPassword"]);
+    $email = trim($_POST["email"]);
+    $firstName = trim($_POST["firstName"]);
+    $lastName = trim($_POST["lastName"]);
+    $phoneNumber = trim($_POST["phoneNumber"]);
 
     if ($_FILES['image']['name'] == "") {
         $image = "";

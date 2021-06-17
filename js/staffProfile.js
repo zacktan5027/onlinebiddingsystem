@@ -1,4 +1,33 @@
 $(document).ready(function () {
+  $("#firstName").keypress(function (e) {
+    //if the letter is not digit then display error and don't type anything
+    if (
+      e.which != 32 &&
+      e.which != 44 &&
+      e.which != 46 &&
+      (e.which < 48 || e.which > 57) &&
+      (e.which < 65 || e.which > 90) &&
+      (e.which < 97 || e.which > 122)
+    ) {
+      //display error message
+      return false;
+    }
+  });
+
+  $("#lastName").keypress(function (e) {
+    //if the letter is not digit then display error and don't type anything
+    if (
+      e.which != 32 &&
+      e.which != 44 &&
+      e.which != 46 &&
+      (e.which < 48 || e.which > 57) &&
+      (e.which < 65 || e.which > 90) &&
+      (e.which < 97 || e.which > 122)
+    ) {
+      //display error message
+      return false;
+    }
+  });
   $("#phoneNumber").keypress(function (e) {
     //if the letter is not digit then display error and don't type anything
     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -56,6 +85,7 @@ $(document).ready(function () {
 function checkProfile(form) {
   let firstName = form.querySelector("#firstName").value.trim();
   let lastName = form.querySelector("#lastName").value.trim();
+  let email = form.querySelector("#email").value.trim();
 
   let emptyField = "";
   let filled = true;
@@ -68,6 +98,11 @@ function checkProfile(form) {
   if (lastName === "") {
     emptyField += ", last name ";
     form.querySelector("#lastName").value = "";
+    filled = false;
+  }
+  if (email === "") {
+    emptyField += ", email ";
+    form.querySelector("#email").value = "";
     filled = false;
   }
 

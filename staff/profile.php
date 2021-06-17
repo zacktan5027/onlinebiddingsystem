@@ -40,22 +40,34 @@ $row = mysqli_fetch_array($query);
                 <hr>
                 <div class="container card  rounded shadow">
                     <div class="card-body">
-                        <form action="profileManager.php" method="post">
+                        <form action="profileManager.php" method="post" onsubmit="return checkProfile(this)" class="needs-validation" novalidate>
                             <div class="form-group">
                                 <label for="firstName">First Name:</label>
-                                <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Enter First Name" value="<?= $row["firstName"] ?>" required>
+                                <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Enter First Name" maxlength="30" value="<?= $row["firstName"] ?>" required>
+                                <div class="invalid-feedback">
+                                    Please enter your first name
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name:</label>
-                                <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter Last Name" value="<?= $row["lastName"] ?>" required>
+                                <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Enter Last Name" maxlength="30" value="<?= $row["lastName"] ?>" required>
+                                <div class="invalid-feedback">
+                                    Please enter your last name
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email" value="<?= $row["email"] ?>" required>
+                                <input type="text" name="email" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}" maxlength="30" placeholder="Enter Email" value="<?= $row["email"] ?>" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber">Phone Number:</label>
-                                <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Enter Phone Number" value="<?= $row["phone_number"] ?>" required>
+                                <input type="text" name="phoneNumber" id="phoneNumber" pattern=".{10,13}" maxlength="13" class="form-control" placeholder="Enter Phone Number" value="<?= $row["phone_number"] ?>" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid phone number
+                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <input type="submit" value="Save" class="btn btn-primary text-uppercase" name="saveProfile">
@@ -69,9 +81,12 @@ $row = mysqli_fetch_array($query);
     </div>
 
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="../js/staffProfile.js"></script>
+<script src="../js/form-validation.js"></script>
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         // Toggle the side navigation

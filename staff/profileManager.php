@@ -6,10 +6,10 @@ require_once "../include/conn.php";
 
 if (isset($_POST["saveProfile"])) {
 
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $email = $_POST["email"];
-    $phoneNumber = $_POST["phoneNumber"];
+    $firstName = trim($_POST["firstName"]);
+    $lastName = trim($_POST["lastName"]);
+    $email = trim($_POST["email"]);
+    $phoneNumber = trim($_POST["phoneNumber"]);
     $userID = $_SESSION["user"]["id"];
 
     $sql = "UPDATE user SET firstName='$firstName', lastName='$lastName', email='$email', phone_number='$phoneNumber' WHERE userID='$userID'";

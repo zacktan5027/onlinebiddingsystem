@@ -153,7 +153,7 @@ function checkAddress(form) {
   }
 
   if (filled === false) {
-    alert("Please fill up " + emptyField);
+    alert("Please fill up " + emptyField + " fields");
     return filled;
   } else {
     return filled;
