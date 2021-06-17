@@ -119,20 +119,6 @@ require_once "include/conn.php";
 
 <script src="js/register.js"></script>
 <script src="js/form-validation.js"></script>
-<script>
-    function previewFile(input) {
-        var file = $("input[type=file]").get(0).files[0];
-
-        if (file) {
-            var reader = new FileReader();
-
-            reader.onload = function() {
-                $("#previewProfile").attr("src", reader.result);
-            };
-
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
+<script src="js/previewProfile.js"></script>
 
 </html>
