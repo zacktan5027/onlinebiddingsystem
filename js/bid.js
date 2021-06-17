@@ -21,7 +21,7 @@ $(document).ready(function () {
   };
 
   bidButton.onclick = () => {
-    if (bidPrice.value <= currentBid.innerHTML.split(" ")[1]) {
+    if (bidPrice.value <= parseFloat(currentBid.innerHTML.split(" ")[1])) {
       alert(
         "Your bid price cannot lower than or equal to the current bid price."
       );
@@ -95,7 +95,6 @@ $(document).ready(function () {
       } else {
         //display error message
         $("#bidPrice_error_msg").tooltip("show");
-
         return false;
       }
     }
