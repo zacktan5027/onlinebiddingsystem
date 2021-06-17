@@ -27,14 +27,14 @@ require_once "include/conn.php";
                 <form action="loginManager.php" method="post" class="needs-validation" novalidate>
                     <div class="form-group p-2">
                         <label for="username" class="font-weight-bold">Username:</label>
-                        <input type="text" name="username" id="username" class="form-control p-4" required>
+                        <input type="text" name="username" id="username" maxlength="25" class="form-control p-4" required>
                         <div class="invalid-feedback">
                             Please enter a username.
                         </div>
                     </div>
                     <div class="form-group p-2">
                         <label for="password" class="font-weight-bold">Password:</label>
-                        <input type="password" name="password" id="password" class="form-control p-4" required>
+                        <input type="password" name="password" id="password" maxlength="25" class="form-control p-4" required>
                         <div class="invalid-feedback">
                             Please enter a password.
                         </div>
@@ -53,7 +53,8 @@ require_once "include/conn.php";
 
 </body>
 
-<script src="js/login.js"></script>
 <script src="js/form-validation.js"></script>
+<script src="js/login.js"></script>
+
 
 </html>
