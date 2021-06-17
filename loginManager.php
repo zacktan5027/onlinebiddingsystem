@@ -17,6 +17,7 @@ if (isset($_POST["login"])) {
     if ($row = mysqli_fetch_assoc($user)) {
         if ($row["verification_status"] == "active") {
             if (password_verify($password, $row["password"])) {
+                $_SESSION["login"] = true;
                 $_SESSION["user"] = array(
                     "id" => $row["userID"],
                     "firstName" => $row["firstName"],
@@ -29,14 +30,17 @@ if (isset($_POST["login"])) {
                 );
 
                 if ($row["account_type"] == "admin") {
+                    $_SESSION["admin"] = true;
                     echo ("<script>
                 window.location.href='admin/index.php';
                 </script>");
                 } else if ($row["account_type"] == "staff") {
+                    $_SESSION["staff"] = true;
                     echo ("<script>
                 window.location.href='staff/index.php';
                 </script>");
                 } else {
+                    $_SESSION["user"] = true;
                     echo ("<script>
                 window.location.href='user/index.php';
                 </script>");
