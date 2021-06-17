@@ -10,8 +10,9 @@ $(document).ready(function () {
   };
 
   sendBtn.onclick = () => {
-    if (inputField.value == "") {
-      $("#msg_error_msg").tooltip("show");
+    if (inputField.value.trim() === "") {
+      inputField.value = "";
+      alert("Please fill up the message field before sending");
       return false;
     } else {
       let xhr = new XMLHttpRequest();

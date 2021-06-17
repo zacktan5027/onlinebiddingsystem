@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 if (isset($_GET['id'])) {
@@ -24,7 +23,7 @@ if (isset($_GET['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css" type="text/css">
-    <link rel="stylesheet" href="userStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/userStyle.css" type="text/css">
     <title>Chat</title>
 </head>
 
@@ -61,11 +60,11 @@ if (isset($_GET['id'])) {
                     <div id="chatBox" class="chatBox border rounded">
 
                     </div>
-                    <form action="#" id="typingArea">
+                    <form action="#" id="typingArea" class="needs-validation" novalidate>
                         <input type="hidden" name="sendChat">
                         <input type="hidden" name="sellerID" id="sellerID" value="<?php echo $sellerID; ?>">
                         <div class="input-group mt-3">
-                            <input type="text" name="message" id="inputField" class="form-control" placeholder="Type a message here..." autocomplete="off" required>
+                            <input type="text" name="message" id="inputField" class="form-control" placeholder="Type a message here..." autocomplete="off" maxlength="100" required>
                             <div id="msg-error-msg" data-toggle="tooltip" data-placement="bottom" title="Please fill up this field"></div>
                             <div class="input-group-append">
                                 <button id="sendButton" class="btn btn-primary rounded"><i class="fas fa-paper-plane"></i></button>
@@ -81,6 +80,7 @@ if (isset($_GET['id'])) {
 
 </body>
 
+<script src="../js/form-validation.js"></script>
 <script src="../js/chat.js"></script>
 
 </html>

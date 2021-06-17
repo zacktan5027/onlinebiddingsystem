@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 ?>
@@ -14,7 +13,7 @@ require_once "../include/conn.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css" type="text/css">
-    <link rel="stylesheet" href="userStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/userStyle.css" type="text/css">
     <title>Chat List</title>
 </head>
 
@@ -26,7 +25,6 @@ require_once "../include/conn.php";
         <hr>
         <div class="card rounded shadow">
             <div class="card-body">
-
                 <div class="d-flex">
                     <?php
                     $userList1 = [];
