@@ -2,7 +2,6 @@
 
 require_once "include/conn.php";
 
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +18,6 @@ require_once "include/conn.php";
 <body class="d-flex flex-column min-vh-100">
     <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
-
 
     <div class="container">
         <div class="container-content rounded shadow">
