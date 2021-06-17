@@ -11,6 +11,7 @@ $("#postcode").keypress(function (e) {
     return false;
   }
 });
+
 /**
  * This funtion is use to restrict the input of alphabatical characters in phone number field
  *
@@ -56,6 +57,7 @@ function selectAddress(button) {
   state.disabled = true;
   phoneNumber.readOnly = true;
 }
+
 /**
  * This function is used to clear the form
  *
