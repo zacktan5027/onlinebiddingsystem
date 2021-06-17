@@ -1,7 +1,7 @@
 <?php
 
-session_start();
-include_once "include/conn.php";
+require_once "include/session.php";
+require_once "include/conn.php";
 
 if (isset($_POST["login"])) {
 
