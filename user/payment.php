@@ -13,7 +13,6 @@ $postcode = $_POST["postcode"];
 $state = $_POST["state"];
 $note = $_POST["note"];
 
-
 if (isset($_POST['insertAddress'])) {
 
     if ($_POST["customerDecision"] == 1) {

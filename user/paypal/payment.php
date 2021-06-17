@@ -2,10 +2,9 @@
 /*
     * Cart page - Shortcut Flow.
 */
-session_start();
 $rootPath = "";
 include_once('api/Config/Config.php');
-
+require_once("../../include/session.php");
 require_once("../../include/conn.php");
 
 $baseUrl = str_replace("index.php", "", URL['current']);
@@ -66,7 +65,8 @@ const SampleCart = array(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../../css/style.default.css" type="text/css"> />
+    <title>Payment</title>
 </head>
 
 <body>

@@ -1,14 +1,7 @@
 <?php
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$conn = new mysqli('localhost', 'root', '', 'onlinebiddingsystem');
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once "../../include/conn.php";
+require_once "../../include/session.php";
 
 if (isset($_POST["recordData"])) {
     if ($_POST["success"]) {

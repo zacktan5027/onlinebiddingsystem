@@ -278,11 +278,14 @@ while ($row = $sql->fetch_array()) {
                                                                 <div class="modal-body">
                                                                     <h5>Please take note:</h5>
                                                                     <p>Once you decline the item, you cannot accept it anymore</p>
-                                                                    <form action="successBidManager.php" method="POST">
+                                                                    <form action="successBidManager.php" method="POST" class="needs-validation" novalidate>
                                                                         <div class="form-group">
                                                                             <input type="hidden" name="itemID" value="<?= $successItem["itemID"] ?>">
                                                                             <h6 for="reason">Reason for decline this item</h6>
                                                                             <textarea name="reason" id="reason" class="form-control" cols="30" rows="5" placeholder="Enter your reason here" required></textarea>
+                                                                            <div class="invalid-feedback">
+                                                                                Please enter a reason for decline this item
+                                                                            </div>
                                                                         </div>
                                                                 </div>
 
@@ -615,6 +618,7 @@ while ($row = $sql->fetch_array()) {
 
 </body>
 <script src="../js/rating.js"></script>
+<script src="../js/form-validation.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 <script>

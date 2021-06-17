@@ -40,30 +40,42 @@ require_once "../include/conn.php";
             <label class="btn btn-outline-secondary btn-block text-left p-4" onclick="clearForm()">
                 Add new location
             </label>
-            <form action="payment.php" id="addressForm" method="post" onsubmit="saveAddress()">
+            <form action="payment.php" id="addressForm" method="post" onsubmit="return checkAddress(this)" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" id="customerName" placeholder="Enter Name" name="customerName" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="customerName" required>
+                    <div class="invalid-feedback">
+                        Please enter a name
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>Address1 <small style="color:gray">(1A, Lorong 9)</small> </label>
                             <input type="text" id="address1" class="form-control" placeholder="Enter Address 1" name="address1" required>
+                            <div class="invalid-feedback">
+                                Please enter a address. Example: 1A, Lorong 9
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Address2 <small style="color:gray">(Taman Sejati Indah)</small> </label>
                             <input type="text" id="address2" class="form-control" placeholder="Enter Address 2" name="address2" required>
+                            <div class="invalid-feedback">
+                                Please enter a address. Example: Taman Sejati Indah
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>City</label>
                             <input type="text" class="form-control" id="city" placeholder="City" name="city" required>
+                            <div class="invalid-feedback">
+                                Please enter a city
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>State</label>
-                            <select class="form-control" id="state" name="state" required>
+                            <select class="form-control" id="state" required>
                                 <option value="">Please choose one</option>
                                 <option value="Kedah">Kedah</option>
                                 <option value="Pulau Penang">Pulau Penang</option>
@@ -79,14 +91,24 @@ require_once "../include/conn.php";
                                 <option value="Sabah">Sabah</option>
                                 <option value="Sarawak">Sarawak</option>
                             </select>
+                            <input type="hidden" id="stateValue" name="state">
+                            <div class="invalid-feedback">
+                                Please select a state
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Post Code <span style="color:red" id="postcode_error_msg"></span></label>
                             <input type="text" id="postcode" class="form-control" name="postcode" placeholder="Postcode" style="margin:3px 0 8px 0" pattern=".{5,5}" maxlength="5" required>
+                            <div class="invalid-feedback">
+                                Please enter a postcode
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Phone Number <span style="color:red" id="phone_error_msg"></span></label>
                             <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" maxlength="13" required>
+                            <div class="invalid-feedback">
+                                Please enter a phone number
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -108,5 +130,6 @@ require_once "../include/conn.php";
 </body>
 
 <script src="../js/address.js"></script>
+<script src="../js/form-validation.js"></script>
 
 </html>
