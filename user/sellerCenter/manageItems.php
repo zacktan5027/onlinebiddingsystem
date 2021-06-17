@@ -20,7 +20,7 @@ $query = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
-    <title>Document</title>
+    <title>Manage Item</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">

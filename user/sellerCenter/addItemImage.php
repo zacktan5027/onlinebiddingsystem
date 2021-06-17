@@ -19,7 +19,7 @@ $itemID = $_GET['id'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script src="../../js/itemImage.js"></script>
-    <title>Document</title>
+    <title>Item Image</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">

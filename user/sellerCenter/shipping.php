@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../../include/session.php";
 require_once "../../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM bidding NATURAL JOIN item WHERE sellerID=" . $_SESSION["user"]["id"] . " AND bidding_status='paid' OR bidding_status='shipped out'");
@@ -26,7 +25,7 @@ while ($row = $sql->fetch_array()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/main.css" type="text/css">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
-    <title>Document</title>
+    <title>Shipping</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
