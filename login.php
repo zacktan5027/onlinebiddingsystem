@@ -2,7 +2,6 @@
 
 require_once "include/conn.php";
 
-
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +53,7 @@ require_once "include/conn.php";
 
 </body>
 
+<script src="js/login.js"></script>
 <script src="js/form-validation.js"></script>
 
 </html>
