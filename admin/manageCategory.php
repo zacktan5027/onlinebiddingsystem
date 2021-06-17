@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 $query = "SELECT * FROM category";
@@ -27,12 +26,10 @@ while ($row = mysqli_fetch_array($sql)) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-
     <link href="css/styles.css" rel="stylesheet" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Manage Categories</title>
     <!-- Favicon-->
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/sidebar.css" rel="stylesheet" />

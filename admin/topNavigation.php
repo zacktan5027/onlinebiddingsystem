@@ -1,6 +1,5 @@
  <link rel="stylesheet" href="../css/style.default.css" id="theme-stylesheet" />
 
-
  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow">
      <div class="container-fluid">
          <button class="btn btn-primary text-uppercase" id="sidebarToggle"><i class="fas fa-bars"></i> Toggle Menu</button>

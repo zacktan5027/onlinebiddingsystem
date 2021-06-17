@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 
@@ -55,7 +54,7 @@ while ($row = mysqli_fetch_array($sql)) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-    <title>Home</title>
+    <title>Dashboard</title>
     <!-- Favicon-->
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/sidebar.css" rel="stylesheet" />

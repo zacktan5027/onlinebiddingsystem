@@ -1,11 +1,9 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 if (isset($_POST["addStaff"])) {
-
 
     $username = $_POST["username"];
     $password = $_POST["password"];

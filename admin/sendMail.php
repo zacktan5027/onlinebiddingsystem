@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+require_once "../include/session.php";
 
 function sendMail($email, $itemName)
 {
