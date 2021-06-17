@@ -2,8 +2,6 @@
 
 require_once "include/conn.php";
 
-session_start();
-
 $itemID = $_GET["id"];
 
 $sql = "SELECT * FROM item NATURAL JOIN bidding WHERE itemID=" . $itemID . "";
@@ -78,7 +76,7 @@ $item = mysqli_fetch_array($query);
                     </div>
                 </div>
                 <br>
-                <!-- PRODUCT DETAILS-->
+
                 <div class="col-lg-6">
                     <h1 class="text-uppercase">
                         <u><?= $item["item_name"] ?></u>
@@ -104,13 +102,11 @@ $item = mysqli_fetch_array($query);
                             echo $name["firstName"];
                         else
                             echo "No bidder found";
-
                         ?>
                     </h1>
                     <h4 class="text-capitalize">total bidder</h4>
                     <h1 id="totalBidder" class="text-muted" style="font-weight: normal;">
                         <?php
-
                         $getTotalBidder = $conn->query("SELECT COUNT(*) as total_bidder FROM bidding_history WHERE itemID=$itemID");
                         $totalBidder = $getTotalBidder->fetch_array();
                         if ($getTotalBidder->num_rows > 0)
@@ -138,7 +134,6 @@ $item = mysqli_fetch_array($query);
         </div>
     </div>
     <div class="container">
-        <!-- DETAILS TABS-->
         <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
             <li class="nav-item"><a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
             <li class="nav-item"><a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Seller</a></li>
@@ -181,10 +176,9 @@ $item = mysqli_fetch_array($query);
 
 </body>
 
-<script src="../js/bid.js"></script>
+<script src="js/bid.js"></script>
 <script>
     $(document).ready(function() {
-
         $("#favourite").click(function() {
             if ($("#favourite").hasClass("liked")) {
                 let itemID = <?= $itemID ?>;

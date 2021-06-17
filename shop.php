@@ -84,7 +84,6 @@ if ($page == 1) {
         $endResult = $number_of_result;
 }
 
-
 $previous = $page;
 $next = $page;
 
@@ -140,7 +139,6 @@ $next = $page;
 
                 ?>
                 <div>
-                    <!-- SHOP LISTING-->
                     <div class=" col-lg-12 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
                             <div class="col-lg-6 mb-2 mb-lg-0">
@@ -235,7 +233,6 @@ $next = $page;
                             }
                             ?>
                         </div>
-                        <!-- PAGINATION-->
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center justify-content-lg-end">
                                 <?php
@@ -263,7 +260,6 @@ $next = $page;
                                     }
                                 }
 
-                                //display the link of the pages in URL  
                                 for ($page = 1; $page <= $number_of_page; $page++) {
                                     if (isset($_GET['page'])) {
                                         if ($_GET['page'] == $page) {
@@ -325,7 +321,6 @@ $next = $page;
     </div>
 
     <?php include "footer.php" ?>
-
 
 </body>
 

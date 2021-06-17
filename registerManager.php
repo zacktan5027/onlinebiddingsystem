@@ -3,7 +3,6 @@
 require_once "include/conn.php";
 
 if (isset($_POST["register"])) {
-
     $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
@@ -28,8 +27,6 @@ if (isset($_POST["register"])) {
         $target_dir = "profilePicture/";
         $image = $id . "_" . $unique_id . "." . $extension;
     }
-
-
 
     if (trim($firstName) == "" || trim($lastName) == "") {
         $message = "";

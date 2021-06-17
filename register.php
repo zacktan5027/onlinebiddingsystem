@@ -2,7 +2,6 @@
 
 require_once "include/conn.php";
 
-
 ?>
 
 <!DOCTYPE html>

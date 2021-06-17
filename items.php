@@ -2,7 +2,6 @@
 
 require_once "include/conn.php";
 
-
 $condition = "";
 if (isset($_GET['condition'])) {
     if ($_GET['condition'] == "popularity")
@@ -89,7 +88,6 @@ if ($page == 1) {
         $endResult = $number_of_result;
 }
 
-
 $previous = $page;
 $next = $page;
 
@@ -173,20 +171,16 @@ $next = $page;
             <div class="container p-0 shadow">
                 <div class="container-content rounded">
                     <?php
-
                     if (isset($_POST["searchItem"])) {
                         echo "<h2>Showing result for \"" . $_POST["searchItem"] . "\" </h2><hr>";
                     }
-
                     ?>
                     <div class="row">
-                        <!-- SHOP SIDEBAR-->
                         <div class="col-lg-3 order-2 order-lg-1">
                             <h5 class="text-uppercase mb-4  text-shadow">Categories</h5>
                             <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
                                 <li class="dropdown-item"><a class="reset-anchor text-uppercase" href="items.php">All items</a></li>
                                 <?php
-
                                 $sql = "SELECT * FROM `category`";
                                 $query = mysqli_query($conn, $sql);
 
@@ -201,7 +195,6 @@ $next = $page;
                                 ?>
                             </ul>
                         </div>
-                        <!-- SHOP LISTING-->
                         <div class=" col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                             <div class="row mb-3 align-items-center">
                                 <div class="col-lg-6 mb-2 mb-lg-0">
@@ -244,7 +237,6 @@ $next = $page;
                                         $itemID = $item['itemID'];
                                         $sql = $conn->query("select * from item_picture WHERE itemID=$itemID limit 1");
                                         $row = $sql->fetch_array();
-
                                 ?>
                                         <div class="col-lg-4 col-sm-6">
                                             <div class="product text-center">
@@ -296,7 +288,6 @@ $next = $page;
                                 }
                                 ?>
                             </div>
-                            <!-- PAGINATION-->
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center justify-content-lg-end">
                                     <?php
@@ -324,7 +315,6 @@ $next = $page;
                                         }
                                     }
 
-                                    //display the link of the pages in URL  
                                     for ($page = 1; $page <= $number_of_page; $page++) {
                                         if (isset($_GET['page'])) {
                                             if ($_GET['page'] == $page) {
@@ -378,7 +368,6 @@ $next = $page;
                                     ?>
                                 </ul>
                             </nav>
-
                         </div>
                     </div>
                 </div>
@@ -387,7 +376,6 @@ $next = $page;
     </div>
 
     <?php include "footer.php" ?>
-
 
 </body>
 

@@ -3,7 +3,6 @@
 <link rel="stylesheet" href="include/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet" />
 
-
 <header class="header bg-white shadow">
     <div class="container px-0 px-lg-3">
         <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
@@ -14,10 +13,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <!-- Link--><a class="nav-link text-uppercase" href="index.php">Home</a>
+                        <a class="nav-link text-uppercase" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <!-- Link--><a class="nav-link text-uppercase" href="items.php">All items</a>
+                        <a class="nav-link text-uppercase" href="items.php">All items</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
@@ -40,7 +39,6 @@
                             <input type="text" name="searchItem" id="searchItem" class="form-control" maxlength="25" placeholder="Search.." required>
                         </form>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="login.php">
                             <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a>
