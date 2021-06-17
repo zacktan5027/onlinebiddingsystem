@@ -40,11 +40,10 @@ if (mysqli_num_rows($query) <= 0) {
     <?php include "header.php"; ?>
     <?php include "navbar.php"; ?>
 
-
-    <div class="container shadow">
+    <div class="container">
         <div class="container-content rounded shadow">
             <div class="container">
-                <form action="forgetPasswordManager.php" method="POST" class="validate" onsubmit="checkPassword(this)">
+                <form action="forgetPasswordManager.php" method="POST" class="needs-validation" novalidate onsubmit="return checkPassword(this)">
                     <input type="hidden" name="email" value="<?= $email ?>">
                     <div class="form-group" id="passwordForm">
                         <label for="password">Password:</label>
@@ -91,5 +90,6 @@ if (mysqli_num_rows($query) <= 0) {
 </body>
 
 <script src="js/register.js"></script>
+<script src="js/form-validation.js"></script>
 
 </html>
