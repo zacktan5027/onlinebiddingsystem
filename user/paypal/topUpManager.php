@@ -1,7 +1,7 @@
 <?php
 
-require_once "../../include/conn.php";
-require_once "../../include/session.php";
+require_once "../../../include/conn.php";
+require_once "../../../include/session.php";
 
 
 if (isset($_POST["recordData"])) {
