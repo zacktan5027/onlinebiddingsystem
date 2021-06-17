@@ -78,7 +78,7 @@ while ($row = mysqli_fetch_array($sql)) {
                     </div>
                     <div class="card mt-4 mb-4 rounded shadow">
                         <div class="card-header">
-                            <button type="button" class="btn btn-primary" style="float: right" data-bs-toggle="modal" data-bs-target="#addCategory">
+                            <button type="button" class="btn btn-primary text-uppercase" style="float: right" data-bs-toggle="modal" data-bs-target="#addCategory">
                                 + Add Category
                             </button>
                             <i class="fas fa-table me-1"></i>
