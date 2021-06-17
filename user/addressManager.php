@@ -6,7 +6,6 @@ if (isset($_GET["delete"])) {
 
     $sql = $conn->query("DELETE FROM `address` WHERE addressID=" . $_GET["addressID"] . "");
 
-
     echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully delete the address');
     							    window.location.href='myAddress.php';
@@ -14,13 +13,13 @@ if (isset($_GET["delete"])) {
 }
 
 if (isset($_POST["addAddress"])) {
-    $customerName = $_POST["customerName"];
-    $phoneNumber = $_POST["phoneNumber"];
-    $address1 = $_POST["address1"];
-    $address2 = $_POST["address2"];
-    $city = $_POST["city"];
-    $postcode = $_POST["postcode"];
-    $state = $_POST["state"];
+    $customerName = trim($_POST["customerName"]);
+    $phoneNumber = trim($_POST["phoneNumber"]);
+    $address1 = trim($_POST["address1"]);
+    $address2 = trim($_POST["address2"]);
+    $city = trim($_POST["city"]);
+    $postcode = trim($_POST["postcode"]);
+    $state = trim($_POST["state"]);
 
     $sql = "INSERT INTO `address`(`userID`, `name`, `phone_number`, `address1`, `address2`, `city`, `postcode`, `state`) VALUES (?,?,?,?,?,?,?,?)";
     if ($stmt = $conn->prepare($sql)) {
@@ -36,14 +35,15 @@ if (isset($_POST["addAddress"])) {
 }
 
 if (isset($_POST["editAddress"])) {
-    $addressID = $_POST["addressID"];
-    $customerName = $_POST["customerName"];
-    $phoneNumber = $_POST["phoneNumber"];
-    $address1 = $_POST["address1"];
-    $address2 = $_POST["address2"];
-    $city = $_POST["city"];
-    $postcode = $_POST["postcode"];
-    $state = $_POST["state"];
+    $addressID = trim($_POST["addressID"]);
+    $customerName = trim($_POST["customerName"]);
+    $phoneNumber = trim($_POST["phoneNumber"]);
+    $address1 = trim($_POST["address1"]);
+    $address2 = trim($_POST["address2"]);
+    $city = trim($_POST["city"]);
+    $postcode = trim($_POST["postcode"]);
+    $state = trim($_POST["state"]);
+
     $sql = "UPDATE `address` SET `name`= ?,`phone_number`= ?,`address1`= ?,`address2`= ?,`city`= ?,`postcode`= ?,`state`=? WHERE addressID = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param('sssssssi', $customerName, $phoneNumber, $address1, $address2, $city, $postcode, $state, $addressID);
