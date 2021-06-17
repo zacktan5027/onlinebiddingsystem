@@ -24,6 +24,9 @@ require_once "include/conn.php";
             <div class="container">
                 <h1 class="text-center text-uppercase">Register</h1>
                 <hr>
+                <p class="text-danger">
+                    Field with * is required
+                </p>
                 <form id="registerForm" action="registerManager.php" method="post" enctype="multipart/form-data" onsubmit="return checkPassword(this)" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label for="profilePicture">Profile Picture:</label><br>
@@ -33,14 +36,14 @@ require_once "include/conn.php";
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username">Username:</label>
+                        <label for="username">Username<span class="text-danger">*</span>:</label>
                         <input type="text" name="username" id="username" class="form-control" maxlength="40" placeholder="Enter Username" required>
                         <div class="invalid-feedback">
                             Please enter a username
                         </div>
                     </div>
                     <div class="form-group" id="passwordForm">
-                        <label for="password">Password:</label>
+                        <label for="password">Password<span class="text-danger">*</span>:</label>
                         <input type="password" name="password" id="password" data-toggle="collapse" href="#passwordRequirement" class="form-control" minlength="8" maxlength="15" placeholder="Enter Password" required>
                         <div class="invalid-feedback">
                             Please enter a password
@@ -60,7 +63,7 @@ require_once "include/conn.php";
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:</label>
+                        <label for="confirmPassword">Confirm Password<span class="text-danger">*</span>:</label>
                         <input type="password" name="confirmPassword" id="confirmPassword" data-toggle="collapse" href="#confirmPasswordRequirement" class="form-control" minlength="8" maxlength="15" placeholder="Enter Confirm Password" required>
                         <div class="invalid-feedback">
                             Please enter a password
@@ -77,28 +80,28 @@ require_once "include/conn.php";
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email">Email<span class="text-danger">*</span>:</label>
                         <input type="email" name="email" id="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}" maxlength="30" placeholder=" Enter Email" required>
                         <div class="invalid-feedback">
                             Please enter a email
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="firstName">First Name:</label>
+                        <label for="firstName">First Name<span class="text-danger">*</span>:</label>
                         <input type="text" name="firstName" id="firstName" class="form-control" placeholder=" Enter First Name" required>
                         <div class="invalid-feedback">
                             Please enter your first name
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:</label>
+                        <label for="lastName">Last Name<span class="text-danger">*</span>:</label>
                         <input type="text" name="lastName" id="lastName" class="form-control" placeholder=" Enter Last Name" required>
                         <div class="invalid-feedback">
                             Please enter your last name
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="phoneNumber">Phone Number: <span style="color:red" id="phone_error_msg"></span></label>
+                        <label for="phoneNumber">Phone Number<span class="text-danger">*</span>: <span style="color:red" id="phone_error_msg"></span></label>
                         <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" pattern=".{10,13}" maxlength="13" placeholder="Enter Phone Number" required>
                         <div class="invalid-feedback">
                             Please enter a phone number
