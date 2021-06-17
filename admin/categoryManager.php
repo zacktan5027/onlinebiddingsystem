@@ -5,7 +5,7 @@ require_once "../include/conn.php";
 
 if (isset($_POST["addCategory"])) {
 
-    $categoryName = $_POST["categoryName"];
+    $categoryName = trim($_POST["categoryName"]);
 
     $query = "INSERT INTO `category`(`category_name`) VALUES ('$categoryName')";
     $sql = mysqli_query($conn, $query);
@@ -26,7 +26,7 @@ if (isset($_POST["addCategory"])) {
 if (isset($_POST["editCategory"])) {
 
     $categoryID = $_POST["categoryID"];
-    $categoryName = $_POST["categoryName"];
+    $categoryName = trim($_POST["categoryName"]);
 
     $query = "UPDATE `category` SET `category_name`='$categoryName' WHERE categoryID='$categoryID'";
     $sql = mysqli_query($conn, $query);

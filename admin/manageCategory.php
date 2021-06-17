@@ -57,11 +57,14 @@ while ($row = mysqli_fetch_array($sql)) {
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="categoryManager.php" method="post" enctype="multipart/form">
+                                        <form action="categoryManager.php" method="post" enctype="multipart/form" class="needs-validation" novalidate>
                                             <div class="form-group">
                                                 <label for="categoryName">
                                                     Category Name: </label>
                                                 <input type="text" name="categoryName" id="categoryName" class="form-control" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a category name
+                                                </div>
                                             </div>
                                     </div>
                                     <div class="modal-footer">
@@ -112,13 +115,16 @@ while ($row = mysqli_fetch_array($sql)) {
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form action="categoryManager.php" method="post">
+                                                                    <form action="categoryManager.php" method="post" class="needs-validation" onsubmit="return checkCategories(this)" novalidate>
                                                                         <div class="form-group">
                                                                             <label for="categoryEditName<?= $category["id"] ?>">
                                                                                 Category Name:
                                                                             </label>
                                                                             <input type="hidden" name="categoryID" value="<?= $category["id"] ?>">
                                                                             <input type="text" name="categoryName" id="categoryEditName<?= $category["id"] ?>" class="form-control" value="<?= $category["name"] ?>" required>
+                                                                            <div class="invalid-feedback">
+                                                                                Please enter a category name
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer mt-3">
                                                                             <button type="button" class="btn btn-danger text-uppercase" data-bs-dismiss="modal">Close</button>
@@ -160,11 +166,13 @@ while ($row = mysqli_fetch_array($sql)) {
         </div>
     </div>
     </div>
-    <script src="js/serverManager.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/serverManager.js"></script>
+    <script src="../js/form-validation.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="../js/manageCategories.js"></script>
 
 </body>
 
