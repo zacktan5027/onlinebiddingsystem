@@ -47,5 +47,6 @@ require_once "include/conn.php";
 </body>
 
 <script src="js/form-validation.js"></script>
+<script src="js/forgetPassword.js"></script>
 
 </html>
