@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 $itemID = $_POST['itemID'];

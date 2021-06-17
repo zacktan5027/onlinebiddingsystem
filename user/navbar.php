@@ -1,5 +1,3 @@
-<!-- navbar-->
-
 <link rel="stylesheet" href="../include/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/style.default.css" id="theme-stylesheet" />
 
@@ -14,10 +12,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <!-- Link--><a class="nav-link text-uppercase" href="index.php">Home</a>
+                        <a class="nav-link text-uppercase" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <!-- Link--><a class="nav-link text-uppercase" href="items.php">All items</a>
+                        <a class="nav-link text-uppercase" href="items.php">All items</a>
                     </li>
 
                     <li class="nav-item dropdown">

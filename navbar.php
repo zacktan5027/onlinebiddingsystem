@@ -35,9 +35,30 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <form action="items.php" method="post">
+                        <form action="items.php" method="post" onsubmit="return checkSearch(this)">
                             <input type="text" name="searchItem" id="searchItem" class="form-control" maxlength="25" placeholder="Search.." required>
                         </form>
+                        <script>
+                            function checkSearch(form) {
+                                let search = form.querySelector("#searchItem").value.trim();
+
+                                let emptyField = "";
+                                let filled = true;
+
+                                if (search === "") {
+                                    emptyField += " search ";
+                                    form.querySelector("#searchItem").value = "";
+                                    filled = false;
+                                }
+
+                                if (filled === false) {
+                                    alert("Please fill up " + emptyField + " fields");
+                                    return filled;
+                                } else {
+                                    return filled;
+                                }
+                            }
+                        </script>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase" href="login.php">

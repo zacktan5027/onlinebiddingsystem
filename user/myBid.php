@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM bidding_history NATURAL JOIN bidding NATURAL JOIN item WHERE bidding_status='start' OR bidding_status='suspend' AND bidderID = " . $_SESSION["user"]["id"] . "");
