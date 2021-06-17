@@ -42,125 +42,126 @@ $(document).ready(function () {
       $(".collapse").collapse("hide");
     }
   });
+
+  let password = document.getElementById("password");
+  let passwordVisible = document.getElementById("passwordVisible");
+  let confirmPassword = document.getElementById("confirmPassword");
+  let confirmPasswordVisible = document.getElementById(
+    "confirmPasswordVisible"
+  );
+  let phoneNumber = document.getElementById("phoneNumber");
+
+  //validare the password when the user is typing
+  password.onkeyup = function () {
+    // validate lowercase letters
+    var lowerCaseLetters = /[a-z]/g;
+    if (password.value.match(lowerCaseLetters)) {
+      lowerCase.classList.remove("invalid");
+      lowerCase.classList.add("valid");
+    } else {
+      lowerCase.classList.remove("valid");
+      lowerCase.classList.add("invalid");
+    }
+
+    // validate capital letters
+    var upperCaseLetters = /[A-Z]/g;
+    if (password.value.match(upperCaseLetters)) {
+      upperCase.classList.remove("invalid");
+      upperCase.classList.add("valid");
+    } else {
+      upperCase.classList.remove("valid");
+      upperCase.classList.add("invalid");
+    }
+
+    // validate numbers
+    var numbers = /[0-9]/g;
+    if (password.value.match(numbers)) {
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+    }
+
+    // validate length
+    if (password.value.length >= 8) {
+      passwordLength.classList.remove("invalid");
+      passwordLength.classList.add("valid");
+    } else {
+      passwordLength.classList.remove("valid");
+      passwordLength.classList.add("invalid");
+    }
+  };
+
+  passwordVisible.onclick = function () {
+    if (passwordVisible.checked == true) {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  };
+
+  //check whether the confirm password is same with the password enter previously
+  confirmPassword.onkeyup = function () {
+    if (
+      document.getElementById("confirmPassword").value ==
+      document.getElementById("password").value
+    ) {
+      match.classList.remove("invalid");
+      match.classList.add("valid");
+    } else {
+      match.classList.remove("valid");
+      match.classList.add("invalid");
+    }
+  };
+
+  confirmPasswordVisible.onclick = function () {
+    if (confirmPasswordVisible.checked == true) {
+      confirmPassword.type = "text";
+    } else {
+      confirmPassword.type = "password";
+    }
+  };
+
+  phoneNumber.onkeyup = function () {
+    let phone_number = phoneNumber.value;
+    phone_number = phone_number.replace(/[^0-9]/g, "");
+    let block1 = "";
+    let block2 = "";
+    let block3 = "";
+    let formatted = "";
+
+    if (phone_number.length == 11) {
+      block1 = phone_number.substring(0, 3);
+      block2 = phone_number.substring(3, 7);
+      block3 = phone_number.substring(7, 11);
+
+      if (phone_number.length >= 4 && phone_number.length <= 7) {
+        formatted = block1 + " " + block2;
+        phoneNumber.value = formatted;
+      } else if (phone_number.length >= 8 && phone_number.length <= 11) {
+        formatted = block1 + " " + block2 + " " + block3;
+        phoneNumber.value = formatted;
+      } else {
+        phoneNumber.value = phone_number;
+      }
+    } else {
+      block1 = phone_number.substring(0, 3);
+      block2 = phone_number.substring(3, 6);
+      block3 = phone_number.substring(6, 10);
+
+      if (phone_number.length >= 4 && phone_number.length <= 6) {
+        formatted = block1 + " " + block2;
+        phoneNumber.value = formatted;
+      } else if (phone_number.length >= 7 && phone_number.length <= 10) {
+        formatted = block1 + " " + block2 + " " + block3;
+        phoneNumber.value = formatted;
+      } else {
+        phoneNumber.value = phone_number;
+      }
+    }
+  };
 });
-
-let username = document.getElementById("username");
-let password = document.getElementById("password");
-let passwordVisible = document.getElementById("passwordVisible");
-let confirmPassword = document.getElementById("confirmPassword");
-let confirmPasswordVisible = document.getElementById("confirmPasswordVisible");
-let phoneNumber = document.getElementById("phoneNumber");
-
-//validare the password when the user is typing
-password.onkeyup = function () {
-  // validate lowercase letters
-  var lowerCaseLetters = /[a-z]/g;
-  if (password.value.match(lowerCaseLetters)) {
-    lowerCase.classList.remove("invalid");
-    lowerCase.classList.add("valid");
-  } else {
-    lowerCase.classList.remove("valid");
-    lowerCase.classList.add("invalid");
-  }
-
-  // validate capital letters
-  var upperCaseLetters = /[A-Z]/g;
-  if (password.value.match(upperCaseLetters)) {
-    upperCase.classList.remove("invalid");
-    upperCase.classList.add("valid");
-  } else {
-    upperCase.classList.remove("valid");
-    upperCase.classList.add("invalid");
-  }
-
-  // validate numbers
-  var numbers = /[0-9]/g;
-  if (password.value.match(numbers)) {
-    number.classList.remove("invalid");
-    number.classList.add("valid");
-  } else {
-    number.classList.remove("valid");
-    number.classList.add("invalid");
-  }
-
-  // validate length
-  if (password.value.length >= 8) {
-    passwordLength.classList.remove("invalid");
-    passwordLength.classList.add("valid");
-  } else {
-    passwordLength.classList.remove("valid");
-    passwordLength.classList.add("invalid");
-  }
-};
-
-passwordVisible.onclick = function () {
-  if (passwordVisible.checked == true) {
-    password.type = "text";
-  } else {
-    password.type = "password";
-  }
-};
-
-//check whether the confirm password is same with the password enter previously
-confirmPassword.onkeyup = function () {
-  if (
-    document.getElementById("confirmPassword").value ==
-    document.getElementById("password").value
-  ) {
-    match.classList.remove("invalid");
-    match.classList.add("valid");
-  } else {
-    match.classList.remove("valid");
-    match.classList.add("invalid");
-  }
-};
-
-confirmPasswordVisible.onclick = function () {
-  if (confirmPasswordVisible.checked == true) {
-    confirmPassword.type = "text";
-  } else {
-    confirmPassword.type = "password";
-  }
-};
-
-phoneNumber.onkeyup = function () {
-  let phone_number = phoneNumber.value;
-  phone_number = phone_number.replace(/[^0-9]/g, "");
-  let block1 = "";
-  let block2 = "";
-  let block3 = "";
-  let formatted = "";
-
-  if (phone_number.length == 11) {
-    block1 = phone_number.substring(0, 3);
-    block2 = phone_number.substring(3, 7);
-    block3 = phone_number.substring(7, 11);
-
-    if (phone_number.length >= 4 && phone_number.length <= 7) {
-      formatted = block1 + " " + block2;
-      phoneNumber.value = formatted;
-    } else if (phone_number.length >= 8 && phone_number.length <= 11) {
-      formatted = block1 + " " + block2 + " " + block3;
-      phoneNumber.value = formatted;
-    } else {
-      phoneNumber.value = phone_number;
-    }
-  } else {
-    block1 = phone_number.substring(0, 3);
-    block2 = phone_number.substring(3, 6);
-    block3 = phone_number.substring(6, 10);
-
-    if (phone_number.length >= 4 && phone_number.length <= 6) {
-      formatted = block1 + " " + block2;
-      phoneNumber.value = formatted;
-    } else if (phone_number.length >= 7 && phone_number.length <= 10) {
-      formatted = block1 + " " + block2 + " " + block3;
-      phoneNumber.value = formatted;
-    } else {
-      phoneNumber.value = phone_number;
-    }
-  }
-};
 
 //function to check the password and confirm password
 function checkPassword(form) {

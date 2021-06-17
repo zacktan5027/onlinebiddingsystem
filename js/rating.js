@@ -1,7 +1,7 @@
-var ratedIndex = -1,
-  feedback = null;
-
 $(document).ready(function () {
+  var ratedIndex = -1,
+    feedback = null;
+
   resetStarColors();
 
   if (localStorage.getItem("ratedIndex") != null) {
@@ -39,15 +39,22 @@ $(document).ready(function () {
   });
 });
 
+/**
+ * @param  {} max
+ */
 function setStars(max) {
   for (var i = 0; i <= max; i++)
     $(".star:eq(" + i + ")").css("color", "yellow");
 }
 
+/**
+ */
 function resetStarColors() {
   $(".star").css("color", "white");
 }
 
+/**
+ */
 function checkForm() {
   if ($("#rating").val() == "") {
     return false;

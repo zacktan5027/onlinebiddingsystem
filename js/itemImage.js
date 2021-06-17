@@ -27,22 +27,6 @@ $(document).ready(function () {
 
   list_image();
 
-  function list_image() {
-    var id = $("#itemID").val();
-    $.ajax({
-      url: "itemImageManager.php",
-      method: "POST",
-      data: {
-        getPicture: "true",
-        itemID: id,
-      },
-      success: function (data) {
-        console.log(data);
-        $("#preview").html(data);
-      },
-    });
-  }
-
   $(document).on("click", ".remove_image", function () {
     var name = $(this).attr("id");
     $.ajax({
@@ -57,3 +41,19 @@ $(document).ready(function () {
     });
   });
 });
+
+function list_image() {
+  var id = $("#itemID").val();
+  $.ajax({
+    url: "itemImageManager.php",
+    method: "POST",
+    data: {
+      getPicture: "true",
+      itemID: id,
+    },
+    success: function (data) {
+      console.log(data);
+      $("#preview").html(data);
+    },
+  });
+}
