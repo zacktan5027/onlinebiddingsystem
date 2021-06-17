@@ -525,12 +525,15 @@ while ($row = $sql->fetch_array()) {
                                                                                 <input type="hidden" name="demo_id" id="demo_id" value="1">
                                                                                 <br>
                                                                                 <div class="col-lg-12">
-                                                                                    <form action="ratingManager.php" method="post" id="ratingForm" onsubmit="return checkForm()">
+                                                                                    <form action="ratingManager.php" method="post" id="ratingForm" onsubmit="return checkForm(this)" class="needs-validation" novalidate>
                                                                                         <h3>Put your Feedback</h3><br>
                                                                                         <input type="hidden" name="biddingID" value="<?= $receiveItem["biddingID"] ?>">
                                                                                         <input type="hidden" name="itemID" value="<?= $receiveItem["itemID"] ?>">
                                                                                         <input type="hidden" name="rating" id="rating">
                                                                                         <textarea class="form-control" rows="5" style="font-size:16px" placeholder="Write your review here..." name="feedback" id="feedback" required></textarea><br>
+                                                                                        <div class="invalid-feedback">
+                                                                                            Please enter your feedback here
+                                                                                        </div>
                                                                                         <div class="modal-footer">
                                                                                             <div class="form-group">
                                                                                                 <form action="receiveOrder.php" method="post" enctype="multipart/form">

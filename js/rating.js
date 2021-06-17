@@ -55,8 +55,13 @@ function resetStarColors() {
 
 /**
  */
-function checkForm() {
+function checkForm(form) {
+  form.classList.add("was-validated");
+
   if ($("#rating").val() == "") {
+    return false;
+  }
+  if (form.feedback.value.trim() === "") {
     return false;
   }
 }
