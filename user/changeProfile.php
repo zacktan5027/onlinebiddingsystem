@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM user WHERE userID=" . $_SESSION["user"]["id"] . "");
 $user = $sql->fetch_array();
+
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +28,13 @@ $user = $sql->fetch_array();
         <hr>
         <div class="text-center">
             <img class="rounded-circle border border-dark" id="previewProfile" src="../profilePicture/blankPicture.png" style="width:200px;height:200px" alt=""><br><br>
-            <form action="profileManager.php" method="post" enctype="multipart/form-data">
+            <form action="profileManager.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="form-group">
                     <label for="profilePicture">Please insert your profile picture</label>
                     <input type="file" name="image" id="profilePicture" class="form-control-file border" onchange="previewFile(this);" required>
+                    <div class="invalid-feedback">
+                        Please insert your profile picture
+                    </div>
                     <input type="submit" value="Save" name="changeProfile" class="btn btn-primary m-2">
                 </div>
             </form>
@@ -42,20 +45,8 @@ $user = $sql->fetch_array();
 
 </body>
 
-<script>
-    function previewFile(input) {
-        var file = $("input[type=file]").get(0).files[0];
-
-        if (file) {
-            var reader = new FileReader();
-
-            reader.onload = function() {
-                $("#previewProfile").attr("src", reader.result);
-            };
-
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
+<script src="../js/previewProfile.js"></script>
+<script src="../js/changeProfile.js"></script>
+<script src="../js/form-validation.js"></script>
 
 </html>

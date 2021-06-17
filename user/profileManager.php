@@ -1,13 +1,12 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 if (isset($_POST["editProfile"])) {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $phoneNumber = $_POST['phoneNumber'];
+    $firstName = trim($_POST['firstName']);
+    $lastName = trim($_POST['lastName']);
+    $phoneNumber = str_replace(' ', '', $_POST['phoneNumber']);
 
     $sql = "UPDATE `user` SET `firstName`=?,`lastName`=?,`phone_number`=? WHERE userID=?";
     if ($stmt = $conn->prepare($sql)) {

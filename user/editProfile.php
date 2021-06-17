@@ -1,14 +1,13 @@
 <?php
 
-session_start();
+require_once "../include/session.php";
+require_once "../include/conn.php";
 
 if (!isset($_POST['editProfile'])) {
     echo ("<script>
                 window.location.href='index.php';
                 </script>");
 }
-
-require_once "../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM user WHERE userID=" . $_SESSION["user"]["id"] . "");
 $row = $sql->fetch_array();
@@ -51,14 +50,17 @@ $row = $sql->fetch_array();
                                     <hr>
                                     <div>
                                         <div>
-                                            <form action="profileManager.php" method="post">
+                                            <form action="profileManager.php" method="post" enctype="multipart/form-data" onsubmit="return checkProfile(this)" class="needs-validation" novalidate>
                                                 <table style="margin:0 auto;">
                                                     <tr style="height: 50px;">
                                                         <td style="width:300px">
                                                             <h3>First Name: </h3>
                                                         </td>
                                                         <td style="width:300px">
-                                                            <input type="text" id="name" class="form-control" name="firstName" placeholder="Enter Name" value="<?= $row["firstName"] ?>" maxlength="30" required>
+                                                            <input type="text" id="firstName" class="form-control" name="firstName" placeholder="Enter Name" value="<?= $row["firstName"] ?>" maxlength="30" required>
+                                                            <div class="invalid-feedback">
+                                                                Please enter your first name
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr style="height: 50px;">
@@ -66,7 +68,10 @@ $row = $sql->fetch_array();
                                                             <h3>Last Name: </h3>
                                                         </td>
                                                         <td style="width:300px">
-                                                            <input type="text" id="name" class="form-control" name="lastName" placeholder="Enter Name" value="<?= $row["lastName"] ?>" maxlength="30" required>
+                                                            <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Enter Name" value="<?= $row["lastName"] ?>" maxlength="30" required>
+                                                            <div class="invalid-feedback">
+                                                                Please enter your last name
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <tr style="height: 50px;">
@@ -75,6 +80,9 @@ $row = $sql->fetch_array();
                                                         </td>
                                                         <td>
                                                             <input type="text" name="phoneNumber" id="phoneNumber" value="<?= $_SESSION['user']['phoneNumber'] ?>" class="form-control" pattern=".{10,13}" maxlength="13" placeholder="Enter Phone Number" required>
+                                                            <div class="invalid-feedback">
+                                                                Please enter your phone number
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -99,63 +107,7 @@ $row = $sql->fetch_array();
 
 </body>
 
-<script>
-    $(document).ready(function() {
-
-        $("#phoneNumber").keypress(function(e) {
-            //if the letter is not digit then display error and don't type anything
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                //display error message
-                $("#phone_error_msg").html("Number only").show().fadeOut("slow");
-                return false;
-            }
-        });
-
-        $("#postcode").keypress(function(e) {
-            //if the letter is not digit then display error and don't type anything
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                //display error message
-                $("#postcode_error_msg").html("Number only").show().fadeOut("slow");
-                return false;
-            }
-        });
-
-        let name = document.getElementById("name");
-        let phoneNumber = document.getElementById("phoneNumber");
-        let address1 = document.getElementById("address1");
-        let address2 = document.getElementById("address2");
-        let postcode = document.getElementById("postcode");
-        let district = document.getElementById("district");
-        let state = document.getElementById("state");
-
-        // When the user clicks on the username field
-        name.onfocus = function() {
-            name.style.removeProperty("border");
-        };
-
-        // When the user clicks outside of the username field and the input is empty use red box to highlight
-        name.onblur = function() {
-            if (name.value == "") {
-                name.style.borderColor = "red";
-            }
-        };
-
-        // When the user clicks on the username field
-        phoneNumber.onfocus = function() {
-            phoneNumber.style.removeProperty("border");
-        };
-
-        // When the user clicks outside of the username field and the input is empty use red box to highlight
-        phoneNumber.onblur = function() {
-            if (phoneNumber.value == "") {
-                phoneNumber.style.borderColor = "red";
-            }
-        };
-
-        $("select[value]").each(function() {
-            $(this).val(this.getAttribute("value"));
-        })
-    });
-</script>
+<script src="../js/form-validation.js"></script>
+<script src="../js/changeProfile.js"></script>
 
 </html>
