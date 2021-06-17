@@ -11,15 +11,32 @@ if (isset($_POST["suspend"])) {
 
     if ($query) {
         $sql = "UPDATE bidding JOIN item ON bidding.itemID=item.itemID JOIN user ON user.userID=item.sellerID SET bidding_status='suspend' WHERE userID=" . $_POST["userID"] . "";
-        $query = mysqli_query($conn, $sql);
+        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         $sql = "UPDATE item SET item_status ='-1' WHERE sellerID = " . $_POST["userID"] . "";
-        $query = mysqli_query($conn, $sql);
+        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         $sql = "DELETE FROM bidding_history WHERE bidderID =" . $_POST["userID"] . "";
-        $query = mysqli_query($conn, $sql);
+        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         if ($query) {
+            $sql = "SELECT * FROM bidding WHERE bidderID=" . $_POST["userID"] . " AND bidding_status='start'";
+            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            if (mysqli_num_rows($query) > 0) {
+                while ($row = mysqli_fetch_array($query)) {
+                    $sql = "SELECT * FROM bidding_history WHERE itemID=" . $row["itemID"] . " ORDER BY bid_price DESC LIMIT 1";
+                    $getBidder = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    if (mysqli_num_rows($getBidder) > 0) {
+                        $bidder = mysqli_fetch_array($getBidder);
+
+                        $sql = "UPDATE bidding SET bidderID=" . $bidder["bidderID"] . " WHERE itemID=" . $bidder["itemID"] . "";
+                        $changeBidder = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    } else {
+                        $sql = "UPDATE bidding SET bidderID=NULL WHERE itemID=" . $row["itemID"] . "";
+                        $changeBidder = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    }
+                }
+            }
             echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully suspend the account');
     							    window.location.href='userList.php';
