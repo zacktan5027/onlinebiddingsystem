@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM address WHERE userID=" . $_SESSION["user"]["id"] . "");
@@ -18,7 +17,6 @@ while ($row = $sql->fetch_array()) {
         "state" => $row["state"]
     );
 }
-
 
 ?>
 
@@ -43,10 +41,11 @@ while ($row = $sql->fetch_array()) {
         <hr>
         <div class="card rounded shadow">
             <div class="card-body">
+                <hr>
                 <?php
                 if (empty($addresses)) {
                 ?>
-                    <p>There is no addresses</p>
+                    <p>There is no addresses added yet</p>
                     <?php
                 } else {
                     foreach ($addresses as $key => $address) {
@@ -69,10 +68,6 @@ while ($row = $sql->fetch_array()) {
                     }
                 }
                 ?>
-
-                <div>
-
-                </div>
             </div>
         </div>
     </div>

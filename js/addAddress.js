@@ -1,4 +1,49 @@
 $(document).ready(function () {
+  $("#address1").keypress(function (e) {
+    //if the letter is not digit then display error and don't type anything
+    if (
+      e.which != 32 &&
+      e.which != 44 &&
+      e.which != 46 &&
+      (e.which < 48 || e.which > 57) &&
+      (e.which < 65 || e.which > 90) &&
+      (e.which < 97 || e.which > 122)
+    ) {
+      //display error message
+      return false;
+    }
+  });
+
+  $("#address2").keypress(function (e) {
+    //if the letter is not digit then display error and don't type anything
+    if (
+      e.which != 32 &&
+      e.which != 44 &&
+      e.which != 46 &&
+      (e.which < 48 || e.which > 57) &&
+      (e.which < 65 || e.which > 90) &&
+      (e.which < 97 || e.which > 122)
+    ) {
+      //display error message
+      return false;
+    }
+  });
+
+  $("#city").keypress(function (e) {
+    //if the letter is not digit then display error and don't type anything
+    if (
+      e.which != 32 &&
+      e.which != 44 &&
+      e.which != 46 &&
+      (e.which < 48 || e.which > 57) &&
+      (e.which < 65 || e.which > 90) &&
+      (e.which < 97 || e.which > 122)
+    ) {
+      //display error message
+      return false;
+    }
+  });
+
   $("#postcode").keypress(function (e) {
     //if the letter is not digit then display error and don't type anything
     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -58,3 +103,41 @@ $(document).ready(function () {
     }
   };
 });
+
+function checkAddress(form) {
+  let name = form.querySelector("#name").value.trim();
+  let address1 = form.querySelector("#address1").value.trim();
+  let address2 = form.querySelector("#address2").value.trim();
+  let city = form.querySelector("#city").value.trim();
+
+  let emptyField = "";
+  let filled = true;
+
+  if (name === "") {
+    emptyField += ", name ";
+    form.querySelector("#name").value = "";
+    filled = false;
+  }
+  if (address1 === "") {
+    emptyField += ", address1 ";
+    form.querySelector("#address1").value = "";
+    filled = false;
+  }
+  if (address2 === "") {
+    emptyField += ", address2 ";
+    form.querySelector("#address2").value = "";
+    filled = false;
+  }
+  if (city === "") {
+    emptyField += ", city ";
+    form.querySelector("#city").value = "";
+    filled = false;
+  }
+
+  if (filled === false) {
+    alert("Please fill up " + emptyField);
+    return filled;
+  } else {
+    return filled;
+  }
+}

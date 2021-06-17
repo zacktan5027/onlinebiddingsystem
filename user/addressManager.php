@@ -1,7 +1,5 @@
 <?php
-
-session_start();
-
+require_once "../include/session.php";
 require_once "../include/conn.php";
 
 if (isset($_GET["delete"])) {

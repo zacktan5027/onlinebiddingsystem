@@ -27,24 +27,36 @@ require_once "../include/conn.php";
         <hr>
         <div class="card">
             <div class="card-body">
-                <form action="addressManager.php" id="bookingForm" method="post">
+                <form action="addressManager.php" id="bookingForm" method="post" onsubmit="return checkAddress(this)" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" name="customerName" required>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="customerName" required>
+                        <div class="invalid-feedback">
+                            Please enter a name
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label>Address1 <small style="color:gray">(1A, Lorong 9)</small> </label>
-                                <input type="text" id="address1" class="form-control" placeholder="Enter Address 1" name="address1" required>
+                                <input type="text" id="address1" class="form-control" placeholder="Enter Address 1" name="address1" maxlength="30" required>
+                                <div class="invalid-feedback">
+                                    Please enter a address. Example: 1A, Lorong 9
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Address2 <small style="color:gray">(Taman Sejati Indah)</small> </label>
-                                <input type="text" id="address2" class="form-control" placeholder="Enter Address 2" name="address2" required>
+                                <input type="text" id="address2" class="form-control" placeholder="Enter Address 2" name="address2" maxlength="30" required>
+                                <div class="invalid-feedback">
+                                    Please enter a address. Example: Taman Sejati Indah
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>City</label>
-                                <input type="text" class="form-control" id="city" placeholder="City" name="city" required>
+                                <input type="text" class="form-control" id="city" placeholder="City" name="city" maxlength="30" required>
+                                <div class="invalid-feedback">
+                                    Please enter a city
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6">
@@ -66,14 +78,23 @@ require_once "../include/conn.php";
                                     <option value="Sabah">Sabah</option>
                                     <option value="Sarawak">Sarawak</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Please select a state
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Post Code <span style="color:red" id="postcode_error_msg"></span></label>
                                 <input type="text" id="postcode" class="form-control" name="postcode" placeholder="Postcode" style="margin:3px 0 8px 0" pattern=".{5,5}" maxlength="5" required>
+                                <div class="invalid-feedback">
+                                    Please enter a postcode
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Phone Number <span style="color:red" id="phone_error_msg"></span></label>
                                 <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" pattern=".{10,13}" maxlength="13" required>
+                                <div class="invalid-feedback">
+                                    Please enter a phone number
+                                </div>
                             </div>
                         </div>
                         <div class="form-group p-3">
@@ -89,66 +110,7 @@ require_once "../include/conn.php";
 
 </body>
 
-<script>
-    $("#postcode").keypress(function(e) {
-        //if the letter is not digit then display error and don't type anything
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-            //display error message
-            $("#postcode_error_msg").html("Number only").show().fadeOut("slow");
-            return false;
-        }
-    });
-
-
-    $("#phoneNumber").keypress(function(e) {
-        //if the letter is not digit then display error and don't type anything
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-            //display error message
-            $("#phone_error_msg").html("Number only").show().fadeOut("slow");
-            return false;
-        }
-    });
-
-    let phoneNumber = document.querySelector("#phoneNumber");
-
-    phoneNumber.onkeyup = function() {
-        let phone_number = phoneNumber.value;
-        phone_number = phone_number.replace(/[^0-9]/g, "");
-        let block1 = "";
-        let block2 = "";
-        let block3 = "";
-        let formatted = "";
-
-        if (phone_number.length == 11) {
-            block1 = phone_number.substring(0, 3);
-            block2 = phone_number.substring(3, 7);
-            block3 = phone_number.substring(7, 11);
-
-            if (phone_number.length >= 4 && phone_number.length <= 7) {
-                formatted = block1 + " " + block2;
-                phoneNumber.value = formatted;
-            } else if (phone_number.length >= 8 && phone_number.length <= 11) {
-                formatted = block1 + " " + block2 + " " + block3;
-                phoneNumber.value = formatted;
-            } else {
-                phoneNumber.value = phone_number;
-            }
-        } else {
-            block1 = phone_number.substring(0, 3);
-            block2 = phone_number.substring(3, 6);
-            block3 = phone_number.substring(6, 10);
-
-            if (phone_number.length >= 4 && phone_number.length <= 6) {
-                formatted = block1 + " " + block2;
-                phoneNumber.value = formatted;
-            } else if (phone_number.length >= 7 && phone_number.length <= 10) {
-                formatted = block1 + " " + block2 + " " + block3;
-                phoneNumber.value = formatted;
-            } else {
-                phoneNumber.value = phone_number;
-            }
-        }
-    };
-</script>
+<script src="../js/addAddress.js"></script>
+<script src="../js/form-validation.js"></script>
 
 </html>
