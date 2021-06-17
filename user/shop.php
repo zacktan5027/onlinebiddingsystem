@@ -4,6 +4,15 @@ require_once "../include/conn.php";
 
 $sellerID = $_GET["id"];
 
+$sql = "SELECT * FROM user WHERE userID = $sellerID AND verification_status='active'";
+$query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+if (mysqli_num_rows($query) == 0) {
+    echo ("<script LANGUAGE='JavaScript'>
+                                    alert('This seller account is suspended')
+        						    window.location.href='index.php';
+        						    </script>");
+}
+
 //define total number of results you want per page  
 $results_per_page = 18;
 
