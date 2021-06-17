@@ -35,38 +35,40 @@ $row = $sql->fetch_array();
                 </a>
                 <h1 class="headline mb-3 font-weight-bold text-uppercase">Edit Item</h1>
                 <hr>
-
+                <p class="text-danger">
+                    Field with * is required
+                </p>
                 <form action="itemManager.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     <div class="form-group">
-                        <label for="itemName">Item name:</label>
-                        <input type="text" name="itemName" id="itemName" class="form-control" value="<?= $row["item_name"] ?>" required>
+                        <label for="itemName">Item name<span class="text-danger">*</span>:</label>
+                        <input type="text" name="itemName" id="itemName" class="form-control" value="<?= $row["item_name"] ?>" maxlength="30" placeholder="Enter Item Name" required>
                         <div class="invalid-feedback">
                             Please enter an item name
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemDescription">Item description:</label>
-                        <textarea name="itemDescription" class="form-control" rows="5" id="itemDescription" required><?= $row["item_description"] ?></textarea>
+                        <label for="itemDescription">Item description<span class="text-danger">*</span>:</label>
+                        <textarea name="itemDescription" class="form-control" rows="5" id="itemDescription" rows="5" placeholder="Enter item Description" required><?= $row["item_description"] ?></textarea>
                         <div class="invalid-feedback">
                             Please enter the description of the item
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="startPrice">Start price:</label>
-                        <input type="text" name="startPrice" id="startPrice" class="form-control" value="<?= $row["item_start_price"] ?>" required>
+                        <label for="startPrice">Start price<span class="text-danger">*</span>:</label>
+                        <input type="text" name="startPrice" id="startPrice" class="form-control" maxlength="5" placeholder="Enter Start Price" value="<?= $row["item_start_price"] ?>" required>
                         <div class="invalid-feedback">
                             Please enter a start price for the item
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemQuantity">Item quantity:</label>
-                        <input type="number" name="itemQuantity" id="itemQuantity" class="form-control" value="<?= $row["item_quantity"] ?>" required>
+                        <label for="itemQuantity">Item quantity<span class="text-danger">*</span>:</label>
+                        <input type="number" name="itemQuantity" id="itemQuantity" class="form-control" maxlength="2" placeholder="Enter Item Quantity" value="<?= $row["item_quantity"] ?>" required>
                         <div class="invalid-feedback">
                             Please enter the quantity of the item
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemCategory">Item category:</label>
+                        <label for="itemCategory">Item category<span class="text-danger">*</span>:</label>
                         <select name="itemCategory" id="itemCategory" class="form-control" required>
                             <option value="">Please choose a category</option>
                             <?php
@@ -85,7 +87,7 @@ $row = $sql->fetch_array();
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemCondition">Item condition:</label>
+                        <label for="itemCondition">Item condition<span class="text-danger">*</span>:</label>
                         <div class="container mt-0">
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" id="condition1" value="bad" name="radio-stacked" <?php if ($row["item_condition"] == "bad") echo "checked"; ?> required>
@@ -108,17 +110,17 @@ $row = $sql->fetch_array();
                     </div>
                     <div class="form-group">
                         <label for="itemWebsite">Item website:</label>
-                        <input type="text" name="itemWebsite" id="itemWebsite" class="form-control" value="<?= $row['item_website'] ?>">
+                        <input type="text" name="itemWebsite" id="itemWebsite" class="form-control" maxlength="30" placeholder="Enter Item Website" value="<?= $row['item_website'] ?>">
                     </div>
                     <div class="form-group">
-                        <label for="itemStartDate">Item Start Date:</label>
+                        <label for="itemStartDate">Item Start Date<span class="text-danger">*</span>:</label>
                         <input type="date" name="itemStartDate" id="itemStartDate" class="form-control" value="<?= $row["start_date"] ?>" min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d', strtotime(date('Y-m-d') . '+14 days')) ?>" required>
                         <div class="invalid-feedback">
                             Please choose a start date
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemDuration">Item Duration:</label>
+                        <label for="itemDuration">Item Duration<span class="text-danger">*</span>:</label>
                         <select name="itemDuration" id="itemDuration" class="form-control" required>
                             <option value="">Please choose a duration</option>
                             <?php
@@ -128,7 +130,6 @@ $row = $sql->fetch_array();
                                                             if ($i == $row["item_duration"])
                                                                 echo "selected";
                                                             ?>><?= $i ?> day</option>
-
                             <?php
                             }
                             ?>

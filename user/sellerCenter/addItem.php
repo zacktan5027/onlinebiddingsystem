@@ -28,26 +28,28 @@ require_once "../../include/conn.php";
                     <h1 class="mx-4"><i class="fas fa-arrow-left"></i></h1>
                 </a>
                 <h1 class="headline mb-3 font-weight-bold text-uppercase">Add Item</h1>
-
                 <hr>
+                <p class="text-danger">
+                    Field with * is required
+                </p>
                 <form action="itemManager.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     <div class="form-group">
-                        <label for="itemName">Item name:</label>
-                        <input type="text" name="itemName" id="itemName" class="form-control" required>
+                        <label for="itemName">Item name<span class="text-danger">*</span>:</label>
+                        <input type="text" name="itemName" id="itemName" class="form-control" maxlength="30" placeholder="Enter Item Name" required>
                         <div class="invalid-feedback">
                             Please enter an item name
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemDescription">Item description:</label>
-                        <textarea name="itemDescription" id="itemDescription" class="form-control" required></textarea>
+                        <label for="itemDescription">Item description<span class="text-danger">*</span>:</label>
+                        <textarea name="itemDescription" id="itemDescription" class="form-control" rows="5" placeholder="Enter item Description" required></textarea>
                         <div class="invalid-feedback">
                             Please enter the description of the item
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="startPrice">Start price:</label>
-                        <input type="text" name="startPrice" id="startPrice" class="form-control" required>
+                        <label for="startPrice">Start price<span class="text-danger">*</span>:</label>
+                        <input type="text" name="startPrice" id="startPrice" class="form-control" maxlength="5" placeholder="Enter Start Price" required>
                         <div class="invalid-feedback">
                             Please enter a start price for the item
                         </div>
@@ -57,14 +59,14 @@ require_once "../../include/conn.php";
                         <label for="systemPay"> Can use System Pay</label>
                     </div>
                     <div class="form-group">
-                        <label for="itemQuantity">Item quantity:</label>
-                        <input type="number" name="itemQuantity" id="itemQuantity" class="form-control" required>
+                        <label for="itemQuantity">Item quantity<span class="text-danger">*</span>:</label>
+                        <input type="text" name="itemQuantity" id="itemQuantity" class="form-control" maxlength="2" placeholder="Enter Item Quantity" required>
                         <div class="invalid-feedback">
                             Please enter the quantity of the item
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemCategory">Item category:</label>
+                        <label for="itemCategory">Item category<span class="text-danger">*</span>:</label>
                         <select name="itemCategory" id="itemCategory" class="form-control" required>
                             <option value="">Please choose a category</option>
                             <?php
@@ -83,7 +85,7 @@ require_once "../../include/conn.php";
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemCondition">Item condition:</label>
+                        <label for="itemCondition">Item condition<span class="text-danger">*</span>:</label>
                         <div class="container mt-0">
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" id="condition1" value="bad" name="itemCondition" required>
@@ -106,17 +108,17 @@ require_once "../../include/conn.php";
                     </div>
                     <div class="form-group">
                         <label for="itemWebsite">Item website:</label>
-                        <input type="text" name="itemWebsite" id="itemWebsite" class="form-control">
+                        <input type="text" name="itemWebsite" id="itemWebsite" class="form-control" maxlength="30" placeholder="Enter Item Website">
                     </div>
                     <div class="form-group">
-                        <label for="itemStartDate">Item Start Date:</label>
+                        <label for="itemStartDate">Item Start Date<span class="text-danger">*</span>:</label>
                         <input type="date" name="itemStartDate" id="itemStartDate" class="form-control" min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d', strtotime(date('Y-m-d') . '+14 days')) ?>" required>
                         <div class="invalid-feedback">
                             Please choose a start date
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="itemDuration">Item Duration:</label>
+                        <label for="itemDuration">Item Duration<span class="text-danger">*</span>:</label>
                         <select name="itemDuration" id="itemDuration" class="form-control" required>
                             <option value="">Please choose a duration</option>
                             <option value="1">1 day</option>
@@ -151,6 +153,7 @@ require_once "../../include/conn.php";
 
 </body>
 
+<script src="../../js/additem.js"></script>
 <script src="../../js/form-validation.js"></script>
 
 </html>
