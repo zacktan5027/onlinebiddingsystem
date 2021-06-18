@@ -208,14 +208,14 @@ while ($row = mysqli_fetch_array($sql)) {
                                                 <thead>
                                                     <tr>
                                                         <th>Category Name</th>
-                                                        <th>Total Success</th>
+                                                        <th>Total Bidding</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php for ($i = 0; $i < sizeof($totalSuccessCategory); $i++) { ?>
+                                                    <?php for ($i = 0; $i < sizeof($totalBiddingCategory); $i++) { ?>
                                                         <tr>
-                                                            <td><?= $totalSuccessCategoryName[$i] ?></td>
-                                                            <td><?= $totalSuccessCategory[$i] ?></td>
+                                                            <td><?= $totalBiddingCategoryName[$i] ?></td>
+                                                            <td><?= $totalBiddingCategory[$i] ?></td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>
@@ -243,14 +243,14 @@ while ($row = mysqli_fetch_array($sql)) {
                                                 <thead>
                                                     <tr>
                                                         <th>Category Name</th>
-                                                        <th>Total Success</th>
+                                                        <th>Total Bidding</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php for ($i = 0; $i < sizeof($totalSuccessDate); $i++) { ?>
+                                                    <?php for ($i = 0; $i < sizeof($totalBiddingDate); $i++) { ?>
                                                         <tr>
-                                                            <td><?= $totalSuccessDateName[$i] ?></td>
-                                                            <td><?= $totalSuccessDate[$i] ?></td>
+                                                            <td><?= $totalBiddingDateName[$i] ?></td>
+                                                            <td><?= $totalBiddingDate[$i] ?></td>
                                                         </tr>
                                                     <?php } ?>
                                                 </tbody>

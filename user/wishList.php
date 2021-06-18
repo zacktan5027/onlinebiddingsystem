@@ -57,7 +57,7 @@ while ($row = $sql->fetch_array()) {
                                         if (mysqli_num_rows($itemPic) > 0) {
                                             $itemPicture = mysqli_fetch_array($itemPic);
                                         ?>
-                                            <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:200px;height:200px" alt="">
+                                            <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:100%;height:200px" alt="">
                                         <?php
                                         } else {
                                         ?>
@@ -65,7 +65,7 @@ while ($row = $sql->fetch_array()) {
                                         <?php
                                         }
                                         ?>
-                                        <div class="card-body">
+                                        <div class="card-body d-flex flex-column">
                                             <h5 class="card-title"><?= $biddingItem["itemName"] ?></h5>
                                             <p class="card-text">Current highest bid: RM
                                                 <?php
@@ -76,7 +76,7 @@ while ($row = $sql->fetch_array()) {
                                                 }
                                                 ?>
                                             </p>
-                                            <a href="itemDetail.php?id=<?= $biddingItem["itemID"] ?>" class="btn btn-primary" style="width:100%">See item</a>
+                                            <a href="itemDetail.php?id=<?= $biddingItem["itemID"] ?>" class="btn btn-primary mt-auto" style="width:100%">See item</a>
                                         </div>
                                     </div>
                                 <?php
@@ -98,7 +98,7 @@ while ($row = $sql->fetch_array()) {
                                         <?php
                                         }
                                         ?>
-                                        <div class="card-body">
+                                        <div class="card-body  d-flex flex-column">
                                             <h5 class="card-title"><?= $biddingItem["itemName"] ?></h5>
                                             <p class="card-text">Current highest bid: RM
                                                 <?php
@@ -136,7 +136,7 @@ while ($row = $sql->fetch_array()) {
                                         <?php
                                         }
                                         ?>
-                                        <div class="card-body">
+                                        <div class="card-body  d-flex flex-column">
                                             <h5 class="card-title"><?= $biddingItem["itemName"] ?></h5>
                                             <p class="card-text">Current highest bid: RM
                                                 <?php

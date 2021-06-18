@@ -9,7 +9,7 @@ $sql = "SELECT * FROM item NATURAL JOIN bidding WHERE itemID=" . $itemID . "";
 $query = mysqli_query($conn, $sql);
 $number_of_picture = mysqli_num_rows($query);
 $item = mysqli_fetch_array($query);
-
+$endDate = $item["end_date"];
 ?>
 
 <!DOCTYPE html>
@@ -77,9 +77,10 @@ $item = mysqli_fetch_array($query);
                 </div>
                 <br>
                 <div class="col-lg-6">
-                    <h1 class="text-uppercase">
+                    <h1>
                         <u><?= $item["item_name"] ?></u>
                     </h1>
+                    <div><span>Time Left: <span id="countDown"></span></span></div>
                     <h3 class="text-capitalize">current bid price</h3>
                     <h1 class="text-muted" id="currentBid" style="font-weight: normal;">
                         RM
@@ -217,6 +218,8 @@ $item = mysqli_fetch_array($query);
 <script>
     $(document).ready(function() {
 
+        let itemID = <?= $_GET["id"] ?>;
+
         $("#favourite").click(function() {
             if ($("#favourite").hasClass("liked")) {
                 let itemID = <?= $itemID ?>;
@@ -292,6 +295,23 @@ $item = mysqli_fetch_array($query);
                 });
             }
         });
+
+        function countdown() {
+            const newYearsDate = new Date("<?= $endDate ?>");
+            const currentDate = new Date();
+            console.log(newYearsDate)
+
+            const totalSeconds = (newYearsDate - currentDate) / 1000;
+            const minutes = Math.floor(totalSeconds / 60) % 60;
+            const hours = Math.floor(totalSeconds / 3600) % 24;
+            const days = Math.floor(totalSeconds / 3600 / 24);
+            const seconds = Math.floor(totalSeconds) % 60;
+
+            document.querySelector("#countDown").innerHTML = '<span><strong>' + days + '</strong> days</span> <span><strong>' + hours + '</strong> hours</span> <span><strong>' + minutes + '</strong> minutes</span> <span><strong>' + seconds + '</strong> seconds</span>'
+
+
+        }
+        setInterval(countdown, 1000);
 
     });
 </script>

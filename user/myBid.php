@@ -3,7 +3,7 @@
 require_once "../include/session.php";
 require_once "../include/conn.php";
 
-$sql = $conn->query("SELECT * FROM bidding_history NATURAL JOIN bidding NATURAL JOIN item WHERE bidding_status='start' OR bidding_status='suspend' AND bidderID = " . $_SESSION["user"]["id"] . "");
+$sql = $conn->query("SELECT * FROM bidding_history NATURAL JOIN bidding NATURAL JOIN item WHERE (bidding_status='start' OR bidding_status='suspend') AND bidderID = " . $_SESSION["user"]["id"] . "");
 $biddingItems = [];
 while ($row = $sql->fetch_array()) {
     $biddingItems[] = array(
@@ -126,7 +126,7 @@ while ($row = $sql->fetch_array()) {
                                 if (!empty($biddingItems)) {
                                     foreach ($biddingItems as $key => $biddingItem) {
                                         if ($biddingItem["biddingStatus"] == "start") { ?>
-                                            <div style="width:200px">
+                                            <div class="card m-2 rounded" style="width:200px">
                                                 <?php
                                                 $itemID = $biddingItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -134,7 +134,7 @@ while ($row = $sql->fetch_array()) {
                                                 if (mysqli_num_rows($itemPic) > 0) {
                                                     $itemPicture = mysqli_fetch_array($itemPic);
                                                 ?>
-                                                    <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:200px;height:200px" alt="">
+                                                    <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:100%;height:200px" alt="">
                                                 <?php
                                                 } else {
                                                 ?>
@@ -142,16 +142,16 @@ while ($row = $sql->fetch_array()) {
                                                 <?php
                                                 }
                                                 ?>
-                                                <div class="card-body">
+                                                <div class="card-body d-flex flex-column">
                                                     <h5 class="card-title"><?= $biddingItem["itemName"] ?></h5>
                                                     <p class="card-text">Current highest bid: RM <?= $biddingItem["currentBid"] ?></p>
-                                                    <a href="itemDetail.php?id=<?= $biddingItem["itemID"] ?>" class="btn btn-primary text-uppercase" style="width:100%">See item</a>
+                                                    <a href="itemDetail.php?id=<?= $biddingItem["itemID"] ?>" class="btn btn-primary text-uppercase mt-auto" style="width:100%">See item</a>
                                                 </div>
                                             </div>
                                         <?php
                                         } else {
                                         ?>
-                                            <div style="width:200px">
+                                            <div class="card m-2 rounded" style="width:200px">
                                                 <?php
                                                 $itemID = $biddingItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -159,7 +159,7 @@ while ($row = $sql->fetch_array()) {
                                                 if (mysqli_num_rows($itemPic) > 0) {
                                                     $itemPicture = mysqli_fetch_array($itemPic);
                                                 ?>
-                                                    <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:200px;height:200px" alt="">
+                                                    <img src="../itemPicture/<?= $itemPicture["picture_name"] ?>" style="width:100%;height:200px" alt="">
                                                 <?php
                                                 } else {
                                                 ?>
@@ -167,10 +167,10 @@ while ($row = $sql->fetch_array()) {
                                                 <?php
                                                 }
                                                 ?>
-                                                <div class="card-body">
+                                                <div class="card-body d-flex flex-column">
                                                     <h5 class="card-title"><?= $biddingItem["itemName"] ?></h5>
                                                     <p class="card-text">Current highest bid: RM <?= $biddingItem["currentBid"] ?></p>
-                                                    <button class="btn btn-primary text-uppercase" style="width:100%;cursor:default" disabled>See item</button>
+                                                    <button class="btn btn-primary text-uppercase mt-auto" style="width:100%;cursor:default" disabled>See item</button>
                                                 </div>
                                                 <div class="overlay">Item Suspended</div>
                                             </div>
@@ -203,7 +203,7 @@ while ($row = $sql->fetch_array()) {
                                         print_r($row);
 
                                         if ($successItem["biddingStatus"] == "email sent") { ?>
-                                            <div style="width:200px">
+                                            <div class="card m-2 rounded" style="width:200px">
                                                 <?php
                                                 $itemID = $successItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -219,11 +219,11 @@ while ($row = $sql->fetch_array()) {
                                                 <?php
                                                 }
                                                 ?>
-                                                <div class="card-body">
+                                                <div class="card-body d-flex flex-column">
                                                     <h4 class="card-title"><?= $successItem["itemName"] ?></h4>
                                                     <p class="card-text">Final highest bid: RM <?= $successItem["currentBid"] ?></p>
 
-                                                    <button type="button" style="width:100%" class="btn btn-primary text-uppercase text-nowrap" data-toggle="modal" data-target="#acceptItem<?= $key ?>">
+                                                    <button type="button" style="width:100%" class="btn btn-primary text-uppercase text-nowrap mt-auto" data-toggle="modal" data-target="#acceptItem<?= $key ?>">
                                                         Accept Item
                                                     </button>
                                                     <!-- The Modal -->
@@ -304,7 +304,7 @@ while ($row = $sql->fetch_array()) {
                                         <?php
                                         } else if ($successItem["biddingStatus"] == "accept") {
                                         ?>
-                                            <div style="width:200px">
+                                            <div class="card m-2 rounded" style="width:200px">
                                                 <?php
                                                 $itemID = $successItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -320,11 +320,11 @@ while ($row = $sql->fetch_array()) {
                                                 <?php
                                                 }
                                                 ?>
-                                                <div class="card-body">
+                                                <div class="card-body d-flex flex-column">
                                                     <h4 class="card-title"><?= $successItem["itemName"] ?></h4>
                                                     <p class="card-text">Final highest bid: RM <?= $successItem["currentBid"] ?></p>
                                                     <a href="selectAddress.php?id=<?= $successItem["itemID"] ?>">
-                                                        <button type="button" class="btn btn-primary text-uppercase text-nowrap">
+                                                        <button type="button" class="btn btn-primary text-uppercase text-nowrap mt-auto">
                                                             Insert Address
                                                         </button>
                                                     </a>
@@ -333,7 +333,7 @@ while ($row = $sql->fetch_array()) {
                                         <?php
                                         } else if ($successItem["biddingStatus"] == "address_inserted") {
                                         ?>
-                                            <div style="width:200px">
+                                            <div class="card m-2 rounded" style="width:200px">
                                                 <?php
                                                 $itemID = $successItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -349,7 +349,7 @@ while ($row = $sql->fetch_array()) {
                                                 <?php
                                                 }
                                                 ?>
-                                                <div class="card-body">
+                                                <div class="card-body d-flex flex-column">
                                                     <h4 class="card-title"><?= $successItem["itemName"] ?></h4>
                                                     <p class="card-text">Final highest bid: RM <?= $successItem["currentBid"] ?></p>
                                                     <a href="paypal/payment.php?id=<?= $successItem["itemID"] ?>">
@@ -384,7 +384,7 @@ while ($row = $sql->fetch_array()) {
                                 if (!empty($historyItems)) {
                                     foreach ($historyItems as $key => $historyItem) {
                                         if ($historyItem["biddingStatus"] == "paid") { ?>
-                                            <div style=" width:200px">
+                                            <div class="card m-2 rounded" style=" width:200px">
                                                 <?php
                                                 $itemID = $historyItem['itemID'];
                                                 $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
@@ -399,10 +399,10 @@ while ($row = $sql->fetch_array()) {
                                                     <img src="../itemPicture/noImage.png" style="width:200px;height:200px" alt="">
                                                 <?php
                                                 }
-                                                ?> <div class="card-body">
+                                                ?> <div class="card-body d-flex flex-column">
                                                     <h4 class="card-title"><?= $historyItem["itemName"] ?></h4>
                                                     <p class="card-text">Paid: RM <?= $historyItem["currentBid"] ?></p>
-                                                    <a href="historyItem.php?id=<?= $historyItem["itemID"] ?>" class="btn btn-primary text-uppercase" style="width:100%">See item</a>
+                                                    <a href="historyItem.php?id=<?= $historyItem["itemID"] ?>" class="btn btn-primary text-uppercase mt-auto" style="width:100%">See item</a>
                                                 </div>
                                             </div>
                                     <?php

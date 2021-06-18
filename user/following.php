@@ -53,7 +53,7 @@ $id = $_SESSION["user"]["id"];
                                         ?>
                                     </td>
                                     <td>
-                                        <a href="chat.php?id=<?= $userID ?>" class="btn btn-primary text-uppercase">Chat Now</a>
+                                        <a href="chat.php?sellerID=<?= $userID ?>" class="btn btn-primary text-uppercase">Chat Now</a>
                                         <a href="shop.php?id=<?= $userID ?>" class="btn btn-primary text-uppercase">View Shop</a>
                                     </td>
                                 </tr>
