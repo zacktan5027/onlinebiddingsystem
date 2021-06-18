@@ -31,7 +31,8 @@ if ($result) {
 
 <body class="d-flex flex-column min-vh-100">
 
-    <?php include 'header.php' ?>
+    <?php include "header.php"; ?>
+    <?php include "navbar.php"; ?>
 
     <section class="section">
         <div class="container">

@@ -18,7 +18,7 @@ if (isset($_POST["forgetPassword"])) {
             ini_set("smtp", "smtp.server.com");
             $to = $row["email"];
             $subject = "Online Bidding System - Change Password";
-            $message = "Hi, " . $row["firstName"] . " " . $row["lastName"] . ". Click <a href='http://localhost/obs/changePassword.php?vkey=" . $verification_key . "&email=" . $row["email"] . "'>here</a> to change your password.";
+            $message = "Hi, " . $row["firstName"] . " " . $row["lastName"] . ". Click <a href='http://localhost/onlinebiddingsystem/changePassword.php?vkey=" . $verification_key . "&email=" . $row["email"] . "'>here</a> to change your password.";
             $headers  = 'From: adhe.ansa@gmail.com';
             $headers .= "MIME-Version:1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

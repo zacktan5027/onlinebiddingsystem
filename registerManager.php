@@ -94,7 +94,7 @@ if (isset($_POST["register"])) {
         ini_set("smtp", "smtp.server.com");
         $to = "$email";
         $subject = "Online Bidding System - Account Verification";
-        $message = "Hi, " . $firstName . " " . $lastName . ". Click <a href='http://localhost/obs/verify.php?vkey=" . $verification_key . "&email=" . $email . "'>here</a> to verify your account.";
+        $message = "Hi, " . $firstName . " " . $lastName . ". Click <a href='http://localhost/onlinebiddingsystem/verify.php?vkey=" . $verification_key . "&email=" . $email . "'>here</a> to verify your account.";
         $headers  = 'From: adhe.ansa@gmail.com';
         $headers .= "MIME-Version:1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
