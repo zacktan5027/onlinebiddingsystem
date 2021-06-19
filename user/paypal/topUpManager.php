@@ -1,7 +1,13 @@
 <?php
 
-require_once "../../../include/conn.php";
-require_once "../../../include/session.php";
+$conn = new mysqli('localhost', 'root', '', 'onlinebiddingsystem');
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 
 if (isset($_POST["recordData"])) {

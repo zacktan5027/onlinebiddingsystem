@@ -26,7 +26,8 @@ if (isset($_POST["sendReport"])) {
         $stmt->execute();
         $stmt->close();
 
-        move_uploaded_file($_FILES["screenShot"]["tmp_name"], $target);
+        if (isset($target))
+            move_uploaded_file($_FILES["screenShot"]["tmp_name"], $target);
 
 
         echo ("<script LANGUAGE='JavaScript'>

@@ -6,18 +6,27 @@ require_once "../include/conn.php";
 if (isset($_POST["editProfile"])) {
     $firstName = trim($_POST['firstName']);
     $lastName = trim($_POST['lastName']);
-    $phoneNumber = str_replace(' ', '', $_POST['phoneNumber']);
 
-    $sql = "UPDATE `user` SET `firstName`=?,`lastName`=?,`phone_number`=? WHERE userID=?";
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('sssi', $firstName, $lastName, $phoneNumber, $_SESSION["user"]["id"]);
-        $stmt->execute();
-        $stmt->close();
+    $sql = "SELECT * FROM user WHERE phone_number='$phone_number' AND userID!=" . $_SESSION["user"]["id"] . "";
+    $query = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($query) > 0) {
 
         echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Phone number is used.');
+    							    window.location.href='profile.php';
+    							    </script>");
+    } else {
+        $sql = "UPDATE `user` SET `firstName`=?,`lastName`=?,`phone_number`=? WHERE userID=?";
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param('sssi', $firstName, $lastName, $phoneNumber, $_SESSION["user"]["id"]);
+            $stmt->execute();
+            $stmt->close();
+
+            echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully edited your profile.');
     							    window.location.href='profile.php';
     							    </script>");
+        }
     }
 }
 

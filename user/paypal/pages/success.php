@@ -4,6 +4,12 @@
     * Buyer can change shipping information for Shortcut flow before execute.
     * Buyer can view order details after execute.
 */
+
+$conn = new mysqli('localhost', 'root', '', 'onlinebiddingsystem');
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
