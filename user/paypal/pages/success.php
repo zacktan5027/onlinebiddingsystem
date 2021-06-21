@@ -13,6 +13,15 @@ if ($conn->connect_error) {
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+if (!isset($_SESSION["normal"])) {
+    echo "<script language='javascript'>
+    alert('Please log in first.');
+    window.location = '../../logout.php';
+    </script>";
+}
+
+
 $rootPath = "../";
 include_once('../api/Config/Config.php');
 include('../templates/header.php');

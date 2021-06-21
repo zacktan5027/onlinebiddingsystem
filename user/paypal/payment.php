@@ -7,6 +7,14 @@ include_once('api/Config/Config.php');
 require_once("../../include/session.php");
 require_once("../../include/conn.php");
 
+if (!isset($_SESSION["normal"])) {
+    echo "<script language='javascript'>
+    alert('Please log in first.');
+    window.location = '../logout.php';
+    </script>";
+}
+
+
 $baseUrl = str_replace("index.php", "", URL['current']);
 
 // Fetching JSON

@@ -6,6 +6,13 @@ session_start();
 
 require_once "../../include/conn.php";
 
+if (!isset($_SESSION["normal"])) {
+    echo "<script language='javascript'>
+    alert('Please log in first.');
+    window.location = '../logout.php';
+    </script>";
+}
+
 $rootPath = "";
 include_once('api/Config/Config.php');
 // include('templates/header.php');

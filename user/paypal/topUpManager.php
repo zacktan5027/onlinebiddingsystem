@@ -9,6 +9,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+if (!isset($_SESSION["normal"])) {
+    echo "<script language='javascript'>
+    alert('Please log in first.');
+    window.location = '../logout.php';
+    </script>";
+}
+
 
 if (isset($_POST["recordData"])) {
     $userID = $_SESSION["user"]["id"];
