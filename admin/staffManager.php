@@ -1,6 +1,6 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 if (isset($_POST["addStaff"])) {
@@ -105,3 +105,8 @@ if (isset($_POST["activeStaff"])) {
     							    </script>");
     }
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

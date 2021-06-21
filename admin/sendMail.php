@@ -1,6 +1,6 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 
 function sendMail($email, $itemName)
 {

@@ -1,6 +1,6 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 $query = "SELECT * FROM category";
