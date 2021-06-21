@@ -42,3 +42,8 @@ if (isset($_POST["sendChat"])) {
 
     $sql = mysqli_query($conn, "INSERT INTO `messages`(`senderID`, `receiverID`, `msg`) VALUES (" . $senderID . "," . $receiverID . ",'" . $message . "')") or die();
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

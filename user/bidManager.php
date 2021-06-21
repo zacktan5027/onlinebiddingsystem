@@ -60,3 +60,8 @@ if (isset($_POST["getTotalBidder"])) {
     }
     echo $output;
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

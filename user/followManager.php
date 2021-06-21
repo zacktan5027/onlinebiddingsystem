@@ -16,3 +16,8 @@ if (isset($_POST["unfollow"])) {
 
     $sql = $conn->query("DELETE FROM `follow` WHERE sellerID=$sellerID AND followerID=$buyerID");
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

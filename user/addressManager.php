@@ -3,13 +3,6 @@
 require_once "checkLogin.php";
 require_once "../include/conn.php";
 
-if (!isset($_SESSION["normal"])) {
-    echo "<script language='javascript'>
-    alert('Please log in first.');
-    window.location = '../index.php';
-    </script>";
-}
-
 if (isset($_GET["delete"])) {
 
     $sql = $conn->query("DELETE FROM `address` WHERE addressID=" . $_GET["addressID"] . "");
@@ -64,3 +57,8 @@ if (isset($_POST["editAddress"])) {
     							    </script>");
     }
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

@@ -48,3 +48,8 @@ if (isset($_POST["savePassword"])) {
                 </script>";
     }
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");

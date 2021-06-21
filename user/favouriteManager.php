@@ -21,3 +21,8 @@ if (isset($_POST["unfavourite"])) {
         						    window.location.href='wishList.php';
         						    </script>");
 }
+
+echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Fail to process you request');
+    							    window.location.href='index.php';
+    							    </script>");
