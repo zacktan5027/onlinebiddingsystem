@@ -1,6 +1,6 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 $addressID = $_GET["addressID"];

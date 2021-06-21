@@ -1,6 +1,6 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 $sql = $conn->query("SELECT * FROM address WHERE userID=" . $_SESSION["user"]["id"] . "");

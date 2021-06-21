@@ -1,8 +1,7 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
-
 
 $itemID = $_GET["id"];
 

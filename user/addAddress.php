@@ -1,6 +1,7 @@
 <?php
 
 require_once "../include/conn.php";
+require_once "checkLogin.php";
 
 ?>
 

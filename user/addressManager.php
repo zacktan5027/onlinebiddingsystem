@@ -1,7 +1,14 @@
 <?php
 
-require_once "../include/session.php";
+require_once "checkLogin.php";
 require_once "../include/conn.php";
+
+if (!isset($_SESSION["normal"])) {
+    echo "<script language='javascript'>
+    alert('Please log in first.');
+    window.location = '../index.php';
+    </script>";
+}
 
 if (isset($_GET["delete"])) {
 

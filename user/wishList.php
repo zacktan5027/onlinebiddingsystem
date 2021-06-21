@@ -1,7 +1,7 @@
 <?php
 
 require_once "../include/conn.php";
-require_once "../include/session.php";
+require_once "checkLogin.php";
 
 $sql = $conn->query("SELECT * FROM bidding NATURAL JOIN item JOIN favourite ON favourite.itemID=item.itemID WHERE (bidding_status='start' OR bidding_status='suspend' OR bidding_status='end') AND favourite.userID = " . $_SESSION["user"]["id"] . "");
 $biddingItems = [];
