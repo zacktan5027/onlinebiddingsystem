@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 $userID = $_GET["id"];

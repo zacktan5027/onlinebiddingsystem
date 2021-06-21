@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+require_once "checkLogin.php";
 require_once "../include/conn.php";
 
 $sql = "SELECT COUNT(*) as total_user FROM `user` WHERE account_type='user'";
