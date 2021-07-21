@@ -260,45 +260,62 @@ while ($row = $sql->fetch_array()) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" style="width:100%" class="btn btn-danger text-uppercase text-nowrap" data-toggle="modal" data-target="#declineItem<?= $key ?>">
-                                                        Decline Item
-                                                    </button>
-                                                    <!-- The Modal -->
-                                                    <div class="modal fade" id="declineItem<?= $key ?>">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
+                                                    <?php
+                                                    $sql = "SELECT * FROM user WHERE userID={$_SESSION['user']['id']}";
+                                                    $query = mysqli_query($conn, $sql);
+                                                    $user = mysqli_fetch_array($query);
+                                                    if ($user["decline_time"] == 0) {
+                                                    ?>
+                                                        <button type="button" style="width:100%" class="btn btn-danger text-uppercase text-nowrap" disabled>
+                                                            Decline Item
+                                                        </button>
+                                                        <p class="text-danger" style="font-size:0.75em">You're no longer allowed to decline items.</p>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <button type="button" style="width:100%" class="btn btn-danger text-uppercase text-nowrap" data-toggle="modal" data-target="#declineItem<?= $key ?>">
+                                                            Decline Item
+                                                        </button>
+                                                        <!-- The Modal -->
+                                                        <div class="modal fade" id="declineItem<?= $key ?>">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
 
-                                                                <!-- Modal Header -->
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title">Decline Item</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                </div>
+                                                                    <!-- Modal Header -->
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Decline Item</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
 
-                                                                <!-- Modal body -->
-                                                                <div class="modal-body">
-                                                                    <h5>Please take note:</h5>
-                                                                    <p>Once you decline the item, you cannot accept it anymore</p>
-                                                                    <form action="successBidManager.php" method="POST" class="needs-validation" novalidate>
-                                                                        <div class="form-group">
-                                                                            <input type="hidden" name="itemID" value="<?= $successItem["itemID"] ?>">
-                                                                            <h6 for="reason">Reason for decline this item</h6>
-                                                                            <textarea name="reason" id="reason" class="form-control" cols="30" rows="5" placeholder="Enter your reason here" required></textarea>
-                                                                            <div class="invalid-feedback">
-                                                                                Please enter a reason for decline this item
+                                                                    <!-- Modal body -->
+                                                                    <div class="modal-body">
+                                                                        <h5>Please take note:</h5>
+                                                                        <p>Once you decline the item, you cannot accept it anymore</p>
+                                                                        <form action="successBidManager.php" method="POST" class="needs-validation" novalidate>
+                                                                            <div class="form-group">
+                                                                                <input type="hidden" name="itemID" value="<?= $successItem["itemID"] ?>">
+                                                                                <h6 for="reason">Reason for decline this item</h6>
+                                                                                <textarea name="reason" id="reason" class="form-control" cols="30" rows="5" placeholder="Enter your reason here" required></textarea>
+                                                                                <div class="invalid-feedback">
+                                                                                    Please enter a reason for decline this item
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                </div>
+                                                                            <p class="text-danger" style="font-size:0.75em">You still can decline item for <?= $user["decline_time"] ?> times. You're no longer able to decline items when you had decline item for 3 times</p>
+                                                                    </div>
 
-                                                                <!-- Modal footer -->
-                                                                <div class="modal-footer">
-                                                                    <input type="submit" value="Decline" name="declineItem" class="btn btn-primary text-uppercase text-nowrap">
-                                                                    <button type="button" class="btn btn-danger text-uppercase text-nowrap" data-dismiss="modal">Close</button>
-                                                                    </form>
-                                                                </div>
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <input type="submit" value="Decline" name="declineItem" class="btn btn-primary text-uppercase text-nowrap">
+                                                                        <button type="button" class="btn btn-danger text-uppercase text-nowrap" data-dismiss="modal">Close</button>
+                                                                        </form>
+                                                                    </div>
 
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                         <?php
