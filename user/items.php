@@ -282,7 +282,11 @@ $next = $page;
                                                     </div>
                                                 </div>
                                                 <h6>
-                                                    <a class="reset-anchor" href="itemDetail.php?id=<?= $item["itemID"] ?>"><?= $item['itemName'] ?></a>
+                                                    <?php
+                                                    $sql = $conn->query("SELECT COUNT(historyID) as total_bidder FROM bidding_history WHERE itemID={$item["itemID"]}");
+                                                    $total_bidder = $sql->fetch_array();
+                                                    ?>
+                                                    <a class="reset-anchor" href="itemDetail.php?id=<?= $item["itemID"] ?>"><?= $item['itemName'] ?><br> <i class="fas fa-user-tag"></i> <?= $total_bidder["total_bidder"] ?></a>
                                                 </h6>
                                                 <p class="small text-muted">RM
                                                     <?php

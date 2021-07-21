@@ -34,7 +34,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <li class="nav-item my-auto pr-2">
                         <form action="items.php" method="post" onsubmit="return checkSearch(this)">
                             <input type="text" name="searchItem" id="searchItem" class="form-control" maxlength="25" placeholder="Search.." required>
                         </form>
@@ -62,7 +62,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                        <a class="nav-link dropdown-toggle text-uppercase" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../profilePicture/<?= $_SESSION["user"]["profile_picture"] ?>" class="smallImage mr-3 p-0" alt=""><?= $_SESSION["user"]["firstName"] . " " . $_SESSION["user"]["lastName"] ?></a>
                         <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="myBid.php"><i class="fas fa-donate mr-1 text-gray"></i>My Bid List</a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="chatList.php"><i class="fas fa-comment-dots mr-1 text-gray"></i>My Chat List</a>
