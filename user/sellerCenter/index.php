@@ -67,6 +67,21 @@ $failRate = 100 - $successRate;
                 <h1 class="mt-4">Dashboard</h1>
                 <div class="container">
                     <hr>
+                    <?php
+                    $sql = "SELECT COUNT(*) as total_shipping FROM bidding JOIN item ON bidding.itemID = item.itemID WHERE sellerID=" . $_SESSION["user"]["id"] . " AND bidding_status='paid'";
+                    $query = mysqli_query($conn, $sql);
+                    $totalShipping = mysqli_fetch_array($query);
+                    if ($totalShipping["total_shipping"] > 0) {
+                    ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>You have <?= $totalShipping["total_shipping"] ?> items need to be shipped out.</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="row">
                     <div class="col-xl-3 col-md-6">

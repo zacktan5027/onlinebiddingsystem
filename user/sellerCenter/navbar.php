@@ -27,7 +27,12 @@
                         <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="manageItems.php"><i class="fas fa-sitemap mr-1 text-gray"></i></i>Manage Item</a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="feedback.php"><i class="fas fa-comments mr-1 text-gray"></i></i>Feedback List</a>
-                            <a class="dropdown-item border-0 transition-link text-uppercase" href="shipping.php"><i class="fas fa-box mr-1 text-gray"></i></i>Shipping</a>
+                            <?php
+                            $sql = "SELECT COUNT(*) as total_shipping FROM bidding JOIN item ON bidding.itemID = item.itemID WHERE sellerID=" . $_SESSION["user"]["id"] . " AND bidding_status='paid'";
+                            $query = mysqli_query($conn, $sql);
+                            $totalShipping = mysqli_fetch_array($query);
+                            ?>
+                            <a class="dropdown-item border-0 transition-link text-uppercase" href="shipping.php"><i class="fas fa-box mr-1 text-gray"></i></i>Shipping <span class="badge badge-danger"><?php if ($totalShipping["total_shipping"] > 0) echo $totalShipping["total_shipping"] ?></span></a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="../index.php"><i class="fas fa-sign-out-alt mr-1 text-gray"></i></i>Back</a>
                         </div>
                     </li>

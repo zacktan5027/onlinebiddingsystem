@@ -64,7 +64,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../profilePicture/<?= $_SESSION["user"]["profile_picture"] ?>" class="smallImage mr-3 p-0" alt=""><?= $_SESSION["user"]["firstName"] . " " . $_SESSION["user"]["lastName"] ?></a>
                         <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
-                            <a class="dropdown-item border-0 transition-link text-uppercase" href="myBid.php"><i class="fas fa-donate mr-1 text-gray"></i>My Bid List</a>
+                            <?php
+                            $sql = "SELECT COUNT(*) as total_notification FROM bidding WHERE bidderID = " . $_SESSION["user"]["id"] . " AND bidding_status='email sent' AND notification_status=0";
+                            $query = mysqli_query($conn, $sql);
+                            $notification = mysqli_fetch_array($query);
+                            ?>
+                            <a class="dropdown-item border-0 transition-link text-uppercase" href="myBid.php"><i class="fas fa-donate mr-1 text-gray"></i>My Bid List <?php if ($notification["total_notification"] > 0) { ?><span class="badge badge-danger"><?= $notification["total_notification"] ?></span><?php } ?></a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="chatList.php"><i class="fas fa-comment-dots mr-1 text-gray"></i>My Chat List</a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="wishList.php"><i class="fa fa-heart mr-1 text-gray"></i>My Wish List</a>
                             <a class="dropdown-item border-0 transition-link text-uppercase" href="following.php"><i class="fa fa-heart mr-1 text-gray"></i>Following</a>

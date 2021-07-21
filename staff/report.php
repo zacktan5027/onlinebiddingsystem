@@ -12,7 +12,9 @@ while ($row = $sql->fetch_array()) {
         "reportTitle" => $row["report_title"],
         "reportTime" => $row["report_time"],
         "itemDescription" => $row["report_description"],
-        "reportCategory" => $row["report_category"]
+        "reportCategory" => $row["report_category"],
+        "itemID" => $row["itemID"],
+        "sellerID" => $row["sellerID"]
     );
 }
 
@@ -61,6 +63,8 @@ while ($row = $sql->fetch_array()) {
                                     <th>User ID</th>
                                     <th>Report Title</th>
                                     <th>Category</th>
+                                    <th>Target Item</th>
+                                    <th>Target User</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -72,6 +76,30 @@ while ($row = $sql->fetch_array()) {
                                         <td><?= $report["userID"] ?></td>
                                         <td><?= $report["reportTitle"] ?></td>
                                         <td><?= $report["reportCategory"] ?></td>
+                                        <td>
+                                            <?php
+                                            if ($report["itemID"] != NULL) {
+                                                $sql = "SELECT * FROM item WHERE itemID = {$report['itemID']}";
+                                                $query = mysqli_query($conn, $sql);
+                                                $item = mysqli_fetch_array($query);
+                                                echo $item["item_name"];
+                                            } else {
+                                                echo "N/A";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if ($report["sellerID"] != NULL) {
+                                                $sql = "SELECT * FROM user WHERE userID = {$report['sellerID']}";
+                                                $query = mysqli_query($conn, $sql);
+                                                $seller = mysqli_fetch_array($query);
+                                                echo $seller["firstName"] . " " . $seller["lastName"];
+                                            } else {
+                                                echo "N/A";
+                                            }
+                                            ?>
+                                        </td>
                                         <td><a href="reportDetail.php?id=<?= $report["reportID"] ?>"><button class="btn btn-primary text-uppercase" style="width:100%">DETAIL</button></a></td>
                                     </tr>
                                 <?php } ?>
