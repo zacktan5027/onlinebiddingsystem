@@ -31,9 +31,9 @@ $results_per_page = 18;
 
 //find the total number of results stored in the database  
 if (isset($_GET["category"])) {
-    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start'AND item_status=1 $category $search GROUP BY item.itemID $condition";
+    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start' AND item_status=1 $category $search GROUP BY item.itemID $condition";
 } else {
-    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start'AND item_status=1 $search GROUP BY item.itemID $condition";
+    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start' AND item_status=1 $search GROUP BY item.itemID $condition";
 }
 $result = mysqli_query($conn, $query);
 $number_of_result = mysqli_num_rows($result);
@@ -55,7 +55,7 @@ $page_first_result = ($page - 1) * $results_per_page;
 if (isset($_GET["category"])) {
     $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start' AND item_status=1 $category $search GROUP BY item.itemID $condition LIMIT " . $page_first_result . ',' . $results_per_page;
 } else {
-    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start'AND item_status=1 $search GROUP BY item.itemID $condition LIMIT " . $page_first_result . ',' . $results_per_page;
+    $query = "SELECT *,COUNT(bidding_history.itemID) as popular,item.itemID as item_id FROM bidding NATURAL JOIN item LEFT JOIN bidding_history ON bidding_history.itemID=item.itemID WHERE bidding_status='start' AND item_status=1 $search GROUP BY item.itemID $condition LIMIT " . $page_first_result . ',' . $results_per_page;
 }
 $result = mysqli_query($conn, $query);
 

@@ -145,6 +145,8 @@ $endDate = $item["end_date"];
                     }
                     ?>
                     <br>
+                    <a href="reportProblem.php?itemID=<?= $itemID ?>" onclick="return confirm('Are you sure you want to report this item?')"><i class="fas fa-exclamation-circle"></i> Report Item</a>
+                    <br>
                     <hr><br>
                     <ul class="list-unstyled small d-inline-block">
                         <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Condition:</strong><span class="ml-2 text-muted text-uppercase"><?= $item["item_condition"] ?></span></li>
@@ -199,6 +201,8 @@ $endDate = $item["end_date"];
                                     <?php
                                     }
                                     ?>
+                                    <a href="reportProblem.php?sellerID=<?= $seller["userID"] ?>" onclick="return confirm('Are you sure you want to report this seller?')"><i class="fas fa-exclamation-circle"></i> Report Seller</a>
+
                                 </div>
                                 <a href="chat.php?sellerID=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase" disabled>Chat Now</a>
                                 <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase">View Shop</a>
@@ -299,7 +303,6 @@ $endDate = $item["end_date"];
         function countdown() {
             const newYearsDate = new Date("<?= $endDate ?>");
             const currentDate = new Date();
-            console.log(newYearsDate)
 
             const totalSeconds = (newYearsDate - currentDate) / 1000;
             const minutes = Math.floor(totalSeconds / 60) % 60;
@@ -312,7 +315,6 @@ $endDate = $item["end_date"];
 
         }
         setInterval(countdown, 1000);
-
     });
 </script>
 

@@ -41,61 +41,212 @@ $row = mysqli_fetch_array($sql);
                 </a>
                 <h1 class="headline m-3 font-weight-bold text-uppercase">Report Detail</h1>
                 <hr>
-                <div class="card m-4 rounded shadow">
-                    <div class="card-header">
-                        <h2>Report Screenshot</h2>
+                <?php
+                if ($row["sellerID"] != "") {
+                ?>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Seller</h2>
+                        </div>
+                        <div class="card-body">
+                            <?php
+                            $sql = mysqli_query($conn, "SELECT * FROM user WHERE userID = {$row["userID"]}");
+                            $seller = mysqli_fetch_array($sql);
+                            ?>
+                            <?php if ($seller["verification_status"] == "active") {
+                            ?>
+                                <form action="userManager.php" method="post">
+                                    <span><?= $seller["firstName"] . " " . $seller["lastName"]; ?></span>
+                                    <input type="hidden" name="userID" value="<?= $seller["userID"] ?>">
+                                    <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                    <input type="hidden" name="report">
+                                    <input type="submit" value="Suspend" name="suspend" class="btn btn-danger text-uppercase float-right" style="width:30%">
+                                </form>
+                            <?php
+                            } else {
+                            ?>
+                                <form action="userManager.php" method="post">
+                                    <span><?= $seller["firstName"] . " " . $seller["lastName"]; ?></span>
+                                    <input type="hidden" name="userID" value="<?= $seller["userID"] ?>">
+                                    <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                    <input type="hidden" name="report">
+                                    <input type="submit" value="Active" name="active" class="btn btn-info text-uppercase float-right" style="width:30%">
+                                </form>
+                            <?php
+                            } ?>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Title</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_title"] ?></p>
+                        </div>
+                    </div>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Description</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_description"] ?></p>
+                        </div>
+                    </div>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Category</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_category"] ?></p>
+                        </div>
+                    </div>
 
-                        <?php if ($row["screenshot"] == "") {
-                        ?>
-                            <p>No screenshot available</p>
-                        <?php
-                        } else {
-                        ?>
-                            <img src="../reportSubmission/<?= $row["screenshot"] ?>" width="300" height="300">
-                        <?php
-                        }
-                        ?>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h4>Action</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <form action="reportManager.php" method="post">
+                                <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                <input type="submit" value="Accept Report" name="acceptReport" class="btn btn-primary text-uppercase">
+                                <input type="submit" value="Reject Report" name="rejectReport" class="btn btn-danger text-uppercase">
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="card m-4 rounded shadow">
-                    <div class="card-header">
-                        <h2>Report Title</h2>
+                <?php
+                } else if ($row["itemID"] != "") {
+                ?>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Seller</h2>
+                        </div>
+                        <div class="card-body">
+                            <?php
+                            $sql = mysqli_query($conn, "SELECT * FROM item WHERE itemID = {$row["itemID"]}");
+                            $item = mysqli_fetch_array($sql);
+                            ?>
+                            <?php if ($item["item_status"] == 1) {
+                            ?>
+                                <form action="userManager.php" method="post">
+                                    <span><?= $item["item_name"] ?></span>
+                                    <input type="hidden" name="userID" value="<?= $item["sellerID"] ?>">
+                                    <input type="hidden" name="itemID" value="<?= $item["itemID"] ?>">
+                                    <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                    <input type="hidden" name="report">
+                                    <input type="submit" value="Suspend" name="suspendItem" class="btn btn-danger text-uppercase float-right" style="width:30%">
+                                </form>
+                            <?php
+                            } else {
+                            ?>
+                                <form action="userManager.php" method="post">
+                                    <span><?= $item["item_name"] ?></span>
+                                    <input type="hidden" name="userID" value="<?= $item["sellerID"] ?>">
+                                    <input type="hidden" name="itemID" value="<?= $item["itemID"] ?>">
+                                    <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                    <input type="hidden" name="report">
+                                    <input type="submit" value="Active" name="activeItem" class="btn btn-info text-uppercase float-right" style="width:30%">
+                                </form>
+                            <?php
+                            } ?>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><?= $row["report_title"] ?></p>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Title</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_title"] ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card m-4 rounded shadow">
-                    <div class="card-header">
-                        <h2>Report Description</h2>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Description</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_description"] ?></p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p><?= $row["report_description"] ?></p>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Category</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_category"] ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card m-4 rounded shadow">
-                    <div class="card-header">
-                        <h2>Report Category</h2>
-                    </div>
-                    <div class="card-body">
-                        <p><?= $row["report_category"] ?></p>
-                    </div>
-                </div>
 
-                <div class="card m-4 rounded shadow">
-                    <div class="card-header">
-                        <h4>Action</h4>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h4>Action</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <form action="reportManager.php" method="post">
+                                <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                <input type="submit" value="Accept Report" name="acceptReport" class="btn btn-primary text-uppercase">
+                                <input type="submit" value="Reject Report" name="rejectReport" class="btn btn-danger text-uppercase">
+                            </form>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <form action="reportManager.php" method="post">
-                            <input type="hidden" name="reportID" value="<?= $reportID ?>">
-                            <input type="submit" value="Accept Report" name="acceptReport" class="btn btn-primary text-uppercase">
-                            <input type="submit" value="Reject Report" name="rejectReport" class="btn btn-danger text-uppercase">
-                        </form>
+                <?php
+                } else {
+                ?>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Screenshot</h2>
+                        </div>
+                        <div class="card-body text-center">
+
+                            <?php if ($row["screenshot"] == "") {
+                            ?>
+                                <p>No screenshot available</p>
+                            <?php
+                            } else {
+                            ?>
+                                <img src="../reportSubmission/<?= $row["screenshot"] ?>" width="300" height="300">
+                            <?php
+                            }
+                            ?>
+                        </div>
                     </div>
-                </div>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Title</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_title"] ?></p>
+                        </div>
+                    </div>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Description</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_description"] ?></p>
+                        </div>
+                    </div>
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h2>Report Category</h2>
+                        </div>
+                        <div class="card-body">
+                            <p><?= $row["report_category"] ?></p>
+                        </div>
+                    </div>
+
+                    <div class="card m-4 rounded shadow">
+                        <div class="card-header">
+                            <h4>Action</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <form action="reportManager.php" method="post">
+                                <input type="hidden" name="reportID" value="<?= $reportID ?>">
+                                <input type="submit" value="Accept Report" name="acceptReport" class="btn btn-primary text-uppercase">
+                                <input type="submit" value="Reject Report" name="rejectReport" class="btn btn-danger text-uppercase">
+                            </form>
+                        </div>
+                    </div>
+                <?php
+                } ?>
             </div>
 
         </div>

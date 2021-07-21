@@ -36,10 +36,17 @@ if (isset($_POST["suspend"])) {
                     }
                 }
             }
-            echo ("<script LANGUAGE='JavaScript'>
+            if (isset($_POST["report"])) {
+                echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Successfully active the account');
+    							    window.location.href='reportDetail.php?id=" . $_POST["reportID"] . "';
+    							    </script>");
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully suspend the account');
     							    window.location.href='userList.php';
     							    </script>");
+            }
         } else {
             $sql = "UPDATE user SET verification_status ='active' WHERE userID=" . $_POST["userID"] . "";
             $query = mysqli_query($conn, $sql);
@@ -69,10 +76,17 @@ if (isset($_POST["active"])) {
         $query = mysqli_query($conn, $sql);
 
         if ($query) {
-            echo ("<script LANGUAGE='JavaScript'>
+            if (isset($_POST["report"])) {
+                echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Successfully active the account');
+    							    window.location.href='reportDetail.php?id=" . $_POST["reportID"] . "';
+    							    </script>");
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully active the account');
     							    window.location.href='userList.php';
     							    </script>");
+            }
         } else {
             $sql = "UPDATE user SET verification_status ='suspend' WHERE userID=" . $_POST["userID"] . "";
             $query = mysqli_query($conn, $sql);
@@ -100,10 +114,17 @@ if (isset($_POST["suspendItem"])) {
         $sql = "UPDATE bidding SET bidding_status='suspend' WHERE itemID = $itemID";
         $query = mysqli_query($conn, $sql);
         if ($query) {
-            echo ("<script LANGUAGE='JavaScript'>
+            if (isset($_POST["report"])) {
+                echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Successfully suspend the item');
+    							    window.location.href='reportDetail.php?id=" . $_POST["reportID"] . "';
+    							    </script>");
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully suspend the item');
     							    window.location.href='userDetail.php?id=$userID';
     							    </script>");
+            }
         } else {
             $sql = "UPDATE item SET item_status ='1' WHERE itemID = $itemID";
             $query = mysqli_query($conn, $sql);
@@ -143,10 +164,17 @@ if (isset($_POST["activeItem"])) {
         $sql = "UPDATE bidding SET bidding_status='pending' WHERE itemID = $itemID";
         $query = mysqli_query($conn, $sql);
         if ($query) {
-            echo ("<script LANGUAGE='JavaScript'>
+            if (isset($_POST["report"])) {
+                echo ("<script LANGUAGE='JavaScript'>
+    							    window.alert('Successfully active the item');
+    							    window.location.href='reportDetail.php?id=" . $_POST["reportID"] . "';
+    							    </script>");
+            } else {
+                echo ("<script LANGUAGE='JavaScript'>
     							    window.alert('Successfully active the item');
     							    window.location.href='userDetail.php?id=$userID';
     							    </script>");
+            }
         } else {
             $sql = "UPDATE item SET item_status ='-1' WHERE itemID = $itemID";
             $query = mysqli_query($conn, $sql);
