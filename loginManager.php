@@ -8,13 +8,9 @@ if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $checkUsername = "SELECT * FROM USER WHERE username = ?";
-    $stmt = $conn->prepare($checkUsername);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $user = mysqli_stmt_get_result($stmt);
-    $stmt->close();
-    if ($row = mysqli_fetch_assoc($user)) {
+    $checkUsername = "SELECT * FROM user WHERE username = '{$username}'";
+    $stmt = mysqli_query($conn, $checkUsername);
+    if ($row = mysqli_fetch_array($stmt)) {
         if ($row["verification_status"] == "active") {
             if (password_verify($password, $row["password"])) {
                 $_SESSION["login"] = true;

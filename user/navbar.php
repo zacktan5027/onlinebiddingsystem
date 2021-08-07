@@ -3,7 +3,7 @@
 
 
 <header class="header bg-white shadow">
-    <div class="container px-0 px-lg-3">
+    <div class="container px-0 px-lg-3 text-center">
         <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
             <a class="navbar-brand" href="index.php"><span class="font-weight-bold text-uppercase text-dark">obs</span></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
                             $sql = mysqli_query($conn, $query);
                             while ($categories = mysqli_fetch_array($sql)) {
                             ?>
-                                <a class="dropdown-item border-0 transition-link text-uppercase" href="items.php?category=<?= $categories["categoryID"] ?>"><?= $categories["category_name"] ?></a>
+                                <a class="dropdown-item border-0 transition-link text-uppercase text-center text-sm-left" href="items.php?category=<?= $categories["categoryID"] ?>"><?= $categories["category_name"] ?></a>
                             <?php
                             }
                             ?>
@@ -63,7 +63,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../profilePicture/<?= $_SESSION["user"]["profile_picture"] ?>" class="smallImage mr-3 p-0" alt=""><?= $_SESSION["user"]["firstName"] . " " . $_SESSION["user"]["lastName"] ?></a>
-                        <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
+                        <div class="dropdown-menu mt-3 text-center text-sm-left" aria-labelledby="pagesDropdown">
                             <?php
                             $sql = "SELECT COUNT(*) as total_notification FROM bidding WHERE bidderID = " . $_SESSION["user"]["id"] . " AND bidding_status='email sent' AND notification_status=0";
                             $query = mysqli_query($conn, $sql);

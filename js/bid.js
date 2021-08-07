@@ -28,6 +28,11 @@ $(document).ready(function () {
       bidPrice.value = "";
       return false;
     }
+    if (bidPrice.value > parseFloat(currentBid.innerHTML.split(" ")[1]) + 100) {
+      alert("The maximum bid price for each bid is RM100.");
+      bidPrice.value = "";
+      return false;
+    }
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "bidManager.php", true);
     xhr.onload = () => {

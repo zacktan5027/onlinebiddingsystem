@@ -66,11 +66,11 @@ $account_balance = $row['account_balance'];
                         <form action="paypal/index.php" method="POST">
                             <div style="text-align: center;">
                                 <div class="row">
-                                    <div class="col-md-10 col-lg-3" style="text-align:right">
+                                    <div class="col-sm-3 text-center text-sm-right">
                                         <h1>RM:</h1>
                                     </div>
-                                    <div class="col-md-10 col-lg-9">
-                                        <input style="width:70%;text-align:center;font-size:30px" class="form-control" id="topupValue" maxlength="4" type="text" name="topUpValue" required>
+                                    <div class="col-sm-9 text-center text-sm-left">
+                                        <input style="max-width:500px;text-align:center;font-size:30px" class="form-control" id="topupValue" maxlength="4" type="text" name="topUpValue" required>
                                     </div>
                                 </div>
                                 <input class="btn btn-primary text-uppercase m-3" type="submit" name="topUp" value="Pay now">

@@ -110,17 +110,17 @@ $next = $page;
                 <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                     <div class="col-lg-8">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-sm-3 text-center">
                                 <img src="profilePicture/<?= $seller["profile_picture"] ?>" class="sellerImage whiteMargin">
                             </div>
-                            <div class="col-9">
+                            <div class="col-sm-9 text-center text-sm-left">
                                 <h4 class="whiteMargin"><?= $seller["firstName"] . " " . $seller["lastName"] ?></h4>
                                 <button class="btn btn-primary text-uppercase" onclick="alert('Please sign in first.'); window.location.href='login.php'">Chat Now</button>
                                 <button class="btn btn-primary text-uppercase" onclick="window.location.href='feedback.php?id=<?= $sellerID ?>'">Feedback</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-lg-right">
+                    <div class="col-lg-4 text-center text-sm-left">
                         <h5> Total Items: <?= $number_of_result ?></h5>
                         <h5>Total Success: <?= $totalSuccess["total_success"] ?></h5>
                         <h5>Rating: <?= sprintf('%0.2f', $averageRating["average_rating"]) ?><i class="fa fa-star fa-2x star" style="margin:0 5px;color:yellow;font-size:1em;text-shadow: 0 0 3px #000;"></i></h5>
@@ -142,7 +142,7 @@ $next = $page;
                     <div class=" col-lg-12 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
                             <div class="col-lg-6 mb-2 mb-lg-0">
-                                <p class="text-small text-muted mb-0">Showing <?= $startResult ?> – <?= $endResult ?> of <?= $number_of_result ?> results</p>
+                                <p class="text-small text-muted mb-0 text-center text-sm-left">Showing <?= $startResult ?> – <?= $endResult ?> of <?= $number_of_result ?> results</p>
                             </div>
                             <div class="col-lg-6">
                                 <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
@@ -299,7 +299,7 @@ $next = $page;
                                     <?php
                                     }
                                 } else {
-                                    if ($number_of_page == 0) {
+                                    if ($number_of_page == 0 or $number_of_page == $next) {
                                     ?>
                                         <li class="page-item disabled"><a class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 

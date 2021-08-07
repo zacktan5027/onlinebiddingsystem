@@ -20,9 +20,9 @@ require_once "include/conn.php";
     <?php include "navbar.php"; ?>
 
     <div class="container">
-        <div class="card m-5 p-5 rounded shadow">
+        <div class="container-content rounded shadow">
             <div class="container">
-                <h1 class="text-center text-uppercase">Register</h1>
+                <h1 class="text-center text-uppercase text-">Register</h1>
                 <hr>
                 <p class="text-danger">
                     Field with * is required
@@ -37,14 +37,14 @@ require_once "include/conn.php";
                     </div>
                     <div class="form-group">
                         <label for="username">Username<span class="text-danger">*</span>:</label>
-                        <input type="text" name="username" id="username" class="form-control" maxlength="40" placeholder="Enter Username" required>
+                        <input type="text" name="username" id="username" class="form-control" maxlength="25" placeholder="Enter Username" required>
                         <div class="invalid-feedback">
                             Please enter a username
                         </div>
                     </div>
                     <div class="form-group" id="passwordForm">
                         <label for="password">Password<span class="text-danger">*</span>:</label>
-                        <input type="password" name="password" id="password" data-toggle="collapse" href="#passwordRequirement" class="form-control" minlength="8" maxlength="15" placeholder="Enter Password" required>
+                        <input type="password" name="password" id="password" data-toggle="collapse" href="#passwordRequirement" class="form-control" minlength="8" maxlength="25" placeholder="Enter Password" required>
                         <div class="invalid-feedback">
                             Please enter a password
                         </div>
@@ -54,9 +54,9 @@ require_once "include/conn.php";
                         </div>
                         <div id="passwordRequirement" class="panel-collapse collapse">
                             <div class="requirement-body p-3">
-                                <h3>Password must contain the following:</h3>
+                                <h4>Password must contain the following:</h4>
                                 <p id="lowerCase" class="invalid">A <b>lowercase</b> letter</p>
-                                <p id="upperCase" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                                <p id="upperCase" class="invalid">A <b>uppercase</b> letter</p>
                                 <p id="number" class="invalid">A <b>number</b></p>
                                 <p id="passwordLength" class="invalid">Minimum <b>8 characters</b></p>
                             </div>
@@ -64,7 +64,7 @@ require_once "include/conn.php";
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword">Confirm Password<span class="text-danger">*</span>:</label>
-                        <input type="password" name="confirmPassword" id="confirmPassword" data-toggle="collapse" href="#confirmPasswordRequirement" class="form-control" minlength="8" maxlength="15" placeholder="Enter Confirm Password" required>
+                        <input type="password" name="confirmPassword" id="confirmPassword" data-toggle="collapse" href="#confirmPasswordRequirement" class="form-control" minlength="8" maxlength="25" placeholder="Enter Confirm Password" required>
                         <div class="invalid-feedback">
                             Please enter a password
                         </div>
@@ -74,7 +74,7 @@ require_once "include/conn.php";
                         </div>
                         <div id="confirmPasswordRequirement" class="panel-collapse collapse">
                             <div class="requirement-body p-3">
-                                <h3>Password must match with the previous password:</h3>
+                                <h4>Password must match with the previous password:</h4>
                                 <p id="match" class="invalid"><b>Match</b></p>
                             </div>
                         </div>
@@ -88,14 +88,14 @@ require_once "include/conn.php";
                     </div>
                     <div class="form-group">
                         <label for="firstName">First Name<span class="text-danger">*</span>:</label>
-                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder=" Enter First Name" required>
+                        <input type="text" name="firstName" id="firstName" class="form-control" maxlength="30" placeholder="Enter First Name" required>
                         <div class="invalid-feedback">
                             Please enter your first name
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name<span class="text-danger">*</span>:</label>
-                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder=" Enter Last Name" required>
+                        <input type="text" name="lastName" id="lastName" class="form-control" maxlength="30" placeholder="Enter Last Name" required>
                         <div class="invalid-feedback">
                             Please enter your last name
                         </div>

@@ -27,7 +27,7 @@ require_once "include/conn.php";
                 <form action="forgetPasswordManager.php" method="POST" class="needs-validation" novalidate>
                     <div class="form-group text-center">
                         <label for="username">Please enter your username</label>
-                        <input type="text" name="username" id="username" class=form-control placeholder="Enter username" required>
+                        <input type="text" name="username" id="username" class=form-control maxlength="25" placeholder="Enter username" required>
                         <div class="invalid-feedback">
                             Please enter a username
                         </div>

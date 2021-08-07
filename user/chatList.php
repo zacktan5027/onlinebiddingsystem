@@ -25,7 +25,7 @@ require_once "../include/conn.php";
         <hr>
         <div class="card rounded shadow">
             <div class="card-body">
-                <div class="d-flex">
+                <div class="row">
                     <?php
                     $userList1 = [];
                     $sql = "SELECT receiverID FROM messages JOIN user ON userID=senderID WHERE senderID=" . $_SESSION["user"]["id"] . "";
@@ -47,16 +47,21 @@ require_once "../include/conn.php";
                         $row = mysqli_fetch_array($query);
                         if ($row["userID"] != $_SESSION["user"]["id"]) {
                     ?>
-                            <div class="card m-2 p-4 rounded" width="250px">
-                                <a href="chat.php?sellerID=<?= $row["userID"] ?>">
-                                    <div class="d-flex">
-                                        <img src="../profilePicture/<?php echo $row['profile_picture']; ?>" class="smallImage" alt="">
-                                        <div class="p-2 ml-2">
-                                            <h4><?php echo $row['firstName'] . " " . $row['lastName'] ?></h4>
+                            <div class="col-sm-4">
+                                <div class="card my-1 p-4 rounded" width="250px">
+                                    <a href="chat.php?sellerID=<?= $row["userID"] ?>">
+                                        <div class="row">
+                                            <div class="col-sm-3 text-center">
+                                                <img src="../profilePicture/<?php echo $row['profile_picture']; ?>" class="smallImage" alt="">
+                                            </div>
+                                            <div class="col-sm-9 text-center text-sm-left">
+                                                <h4><?php echo $row['firstName'] . " " . $row['lastName'] ?></h4>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
+
                     <?php
                         }
                     }

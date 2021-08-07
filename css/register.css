@@ -8,7 +8,7 @@
 
 #passwordRequirement p {
   padding: 10px 35px;
-  font-size: 18px;
+  font-size: 1em;
 }
 
 #confirmPasswordRequirement {
@@ -21,7 +21,7 @@
 
 #confirmPasswordRequirement p {
   padding: 10px 35px;
-  font-size: 18px;
+  font-size: 1em;
 }
 
 /* Add a green text color and a checkmark when the requirements are right */

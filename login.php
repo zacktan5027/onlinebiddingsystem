@@ -48,6 +48,55 @@ require_once "include/conn.php";
         </div>
     </div>
 
+    <div class="container">
+        <div class="container-content">
+            <h1 class="text-center">Please use these account to sign in</h1>
+            <hr>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td><strong>Account</strong></td>
+                        <td><strong>Password</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Account1</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account2</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account3</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account4</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account5</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account6</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account7</td>
+                        <td>123123Aa</td>
+                    </tr>
+                    <tr>
+                        <td>Account8</td>
+                        <td>123123Aa</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <?php include "footer.php" ?>
 
 </body>

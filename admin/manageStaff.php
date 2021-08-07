@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_array($sql)) {
                                             <label for="username">
                                                 Username:
                                             </label>
-                                            <input type="text" name="username" id="username" class="form-control" required>
+                                            <input type="text" name="username" id="username" maxlength="25" class="form-control" required>
                                             <div class="invalid-feedback">
                                                 Please enter a username
                                             </div>
@@ -68,7 +68,7 @@ while ($row = mysqli_fetch_array($sql)) {
                                             <label for="password">
                                                 Password:
                                             </label>
-                                            <input type="password" name="password" id="password" class="form-control" required>
+                                            <input type="password" name="password" id="password" maxlength="25" class="form-control" required>
                                             <div class="invalid-feedback">
                                                 Please enter a password
                                             </div>
@@ -77,7 +77,7 @@ while ($row = mysqli_fetch_array($sql)) {
                                             <label for="confirmPassword">
                                                 Confirm Password:
                                             </label>
-                                            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required>
+                                            <input type="password" name="confirmPassword" id="confirmPassword" maxlength="25" class="form-control" required>
                                             <div class="invalid-feedback">
                                                 Please enter a password
                                             </div>

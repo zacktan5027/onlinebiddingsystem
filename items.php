@@ -149,10 +149,10 @@ $next = $page;
                     <div class="card rounded">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-sm-3 text-center">
                                     <img src="profilePicture/<?= $seller["profile_picture"] ?>" class="sellerImage whiteMargin">
                                 </div>
-                                <div class="col-9">
+                                <div class="col-sm-9 text-center text-sm-left">
                                     <h4 class="whiteMargin"><?= $seller["firstName"] . " " . $seller["lastName"] ?></h4>
                                     <a href="#" class="btn btn-primary text-uppercase" onclick="alert('Please log in first');window.location = 'login.php' ">Chat Now</a>
                                     <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase">View Shop</a>
@@ -177,9 +177,9 @@ $next = $page;
                     ?>
                     <div class="row">
                         <div class="col-lg-3 order-2 order-lg-1">
-                            <h5 class="text-uppercase mb-4  text-shadow">Categories</h5>
+                            <h5 class="text-uppercase mb-4  text-shadow  text-center text-sm-left">Categories</h5>
                             <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
-                                <li class="dropdown-item"><a class="reset-anchor text-uppercase" href="items.php">All items</a></li>
+                                <li class="dropdown-item text-center text-sm-left"><a class="reset-anchor text-uppercase" href="items.php">All items</a></li>
                                 <?php
                                 $sql = "SELECT * FROM `category`";
                                 $query = mysqli_query($conn, $sql);
@@ -187,7 +187,7 @@ $next = $page;
                                 while ($row = mysqli_fetch_array($query)) {
                                 ?>
                                     <a class="reset-anchor" href="items.php?category=<?= $row["categoryID"] ?>">
-                                        <li class="dropdown-item text-uppercase"><?= $row["category_name"] ?>
+                                        <li class="dropdown-item text-uppercase text-center text-sm-left"><?= $row["category_name"] ?>
                                         </li>
                                     </a>
                                 <?php
@@ -198,7 +198,7 @@ $next = $page;
                         <div class=" col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                             <div class="row mb-3 align-items-center">
                                 <div class="col-lg-6 mb-2 mb-lg-0">
-                                    <p class="text-small text-muted mb-0">Showing <?= $startResult ?> – <?= $endResult ?> of <?= $number_of_result ?> results</p>
+                                    <p class="text-small text-muted mb-0  text-center text-sm-left">Showing <?= $startResult ?> – <?= $endResult ?> of <?= $number_of_result ?> results</p>
                                 </div>
                                 <div class="col-lg-6">
                                     <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
@@ -358,7 +358,7 @@ $next = $page;
                                         <?php
                                         }
                                     } else {
-                                        if ($number_of_page == 0 || $number_of_page == 1) {
+                                        if ($number_of_page == 0 || $number_of_page == $next) {
                                         ?>
                                             <li class="page-item disabled"><a class="page-link" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 

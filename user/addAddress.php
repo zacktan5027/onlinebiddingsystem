@@ -31,7 +31,7 @@ require_once "checkLogin.php";
                 <form action="addressManager.php" id="bookingForm" method="post" onsubmit="return checkAddress(this)" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="customerName" required>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" maxlength="30" name="customerName" required>
                         <div class="invalid-feedback">
                             Please enter a name
                         </div>

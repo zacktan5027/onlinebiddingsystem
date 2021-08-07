@@ -32,6 +32,8 @@ if (isset($_POST["name"])) {
 
 
 if (isset($_POST["getPicture"])) {
+
+    print_r($_POST);
     $result = array();
     $files = scandir('../../itemPicture');
 

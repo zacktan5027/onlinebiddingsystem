@@ -7,8 +7,7 @@ require_once "../../include/conn.php";
 $userID = $_SESSION["user"]["id"];
 
 $sql = "SELECT * FROM item JOIN bidding ON bidding.itemID=item.itemID WHERE sellerID = $userID";
-$query = mysqli_query($conn, $sql);
-
+$items = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -52,11 +51,11 @@ $query = mysqli_query($conn, $sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = mysqli_fetch_array($query)) { ?>
+                        <?php while ($item = mysqli_fetch_array($items)) { ?>
                             <tr>
                                 <td>
                                     <?php
-                                    $itemID = $row['itemID'];
+                                    $itemID = $item['itemID'];
                                     $sql = "SELECT * FROM item_picture WHERE itemID = $itemID LIMIT 1";
                                     $itemPic = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($itemPic) > 0) {
@@ -71,40 +70,40 @@ $query = mysqli_query($conn, $sql);
                                     }
                                     ?>
                                 </td>
-                                <td><?= $row["item_name"] ?></td>
-                                <td><?= $row["item_description"] ?></td>
-                                <td><?= $row["item_start_price"] ?></td>
-                                <td><?= $row["item_quantity"] ?></td>
+                                <td><?= $item["item_name"] ?></td>
+                                <td class='comment more'><?= $item["item_description"] ?></td>
+                                <td><?= $item["item_start_price"] ?></td>
+                                <td><?= $item["item_quantity"] ?></td>
                                 <td><?php
-                                    $categoryID =  $row["item_category"];
+                                    $categoryID =  $item["item_category"];
                                     $sql = "SELECT * FROM category WHERE categoryID = $categoryID";
                                     $category = mysqli_query($conn, $sql);
                                     $categoryName = mysqli_fetch_array($category);
                                     echo $categoryName["category_name"];
                                     ?></td>
-                                <td><?= $row["item_condition"] ?></td>
-                                <td><?= $row["start_date"] ?></td>
+                                <td><?= $item["item_condition"] ?></td>
+                                <td><?= $item["start_date"] ?></td>
                                 <td>
                                     <?php
-                                    if ($row["item_status"] == -1) {
+                                    if ($item["item_status"] == -1) {
                                     ?>
                                         <button class="btn btn-danger text-uppercase">Suspended</button>
                                     <?php
                                     } else {
                                     ?>
-                                        <a href="editItem.php?id=<?= $row["itemID"] ?>" <?php if ($row["bidding_status"] != "pending") echo "onclick='return false;' style='cursor:default'"; ?>><button class="btn btn-primary text-uppercase" style="width:100%" <?php if ($row["bidding_status"] != "pending") echo "disabled"; ?>>Edit</button></a>
+                                        <a href="editItem.php?id=<?= $item["itemID"] ?>" <?php if ($item["bidding_status"] != "pending") echo "onclick='return false;' style='cursor:default'"; ?>><button class="btn btn-primary text-uppercase" style="width:100%" <?php if ($item["bidding_status"] != "pending") echo "disabled"; ?>>Edit</button></a>
                                         <?php
-                                        if ($row["item_status"] == 1) {
+                                        if ($item["item_status"] == 1) {
                                         ?>
                                             <form action="itemManager.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure want to unlist this item?')">
-                                                <input type="hidden" name="itemID" value="<?= $row["itemID"] ?>">
+                                                <input type="hidden" name="itemID" value="<?= $item["itemID"] ?>">
                                                 <input type="submit" value="Unlist" class="btn btn-danger text-uppercase" style="width:100%" name="unlistItem">
                                             </form>
                                         <?php
                                         } else {
                                         ?>
                                             <form action="itemManager.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure want to recover this item?')">
-                                                <input type="hidden" name="itemID" value="<?= $row["itemID"] ?>">
+                                                <input type="hidden" name="itemID" value="<?= $item["itemID"] ?>">
                                                 <input type="submit" value="recover" class="btn btn-info text-uppercase" style="width:100%" name="recoverItem">
                                             </form>
                                     <?php
@@ -131,6 +130,41 @@ $query = mysqli_query($conn, $sql);
     if (manageCategoryTable) {
         new simpleDatatables.DataTable(manageCategoryTable);
     }
+</script>
+<script>
+    $(document).ready(function() {
+        var showChar = 100;
+        var ellipsestext = "...";
+        var moretext = "more";
+        var lesstext = "less";
+        $('.more').each(function() {
+            var content = $(this).html();
+
+            if (content.length > showChar) {
+
+                var c = content.substr(0, showChar);
+                var h = content.substr(showChar - 1, content.length - showChar);
+
+                var html = c + '<span class="more ellipses">' + ellipsestext + '</span><span class="more content" ><span style="display:none">' + h + ' </span> <a style="padding:2px 2px" href="" class="morelink">' + moretext + '</a></span>';
+
+                $(this).html(html);
+            }
+
+        });
+
+        $(".morelink").click(function() {
+            if ($(this).hasClass("less")) {
+                $(this).removeClass("less");
+                $(this).html(moretext);
+            } else {
+                $(this).addClass("less");
+                $(this).html(lesstext);
+            }
+            $(this).parent().prev().toggle();
+            $(this).prev().toggle();
+            return false;
+        });
+    });
 </script>
 
 </html>

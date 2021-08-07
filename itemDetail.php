@@ -53,12 +53,12 @@ $endDate = $item["end_date"];
                                     if ($key == 0) {
                                 ?>
                                         <div class="carousel-item active">
-                                            <img src="itemPicture/<?php echo $picture["pictureName"]; ?>" height="500" width="500">
+                                            <img src="itemPicture/<?php echo $picture["pictureName"]; ?>" class="img-responsive" width="100%" max-width="500px">
                                         </div>
                                     <?php } else {
                                     ?>
                                         <div class="carousel-item">
-                                            <img src="itemPicture/<?= $picture["pictureName"] ?>" height="500" width="500">
+                                            <img src="itemPicture/<?= $picture["pictureName"] ?>" class="img-responsive" width="100%" max-width="500px">
                                         </div>
                             <?php
                                     }
@@ -154,13 +154,13 @@ $endDate = $item["end_date"];
                         $seller = $sql->fetch_array();
                         ?>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-sm-3 text-center">
                                 <img src="profilePicture/<?= $seller["profile_picture"] ?>" class="sellerImage whiteMargin">
                             </div>
-                            <div class="col-9">
+                            <div class="col-sm-9 text-center text-sm-left">
                                 <h4 class="whiteMargin"><?= $seller["firstName"] . " " . $seller["lastName"] ?></h4>
-                                <a href="#" onclick="alert('Please log in first');window.location = 'login.php' " class="btn btn-primary text-uppercase" disabled>Chat Now</a>
-                                <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase">View Shop</a>
+                                <a href="#" onclick="alert('Please log in first');window.location = 'login.php' " class="btn btn-primary" disabled>Chat Now</a>
+                                <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary">View Shop</a>
                             </div>
                         </div>
                     </div>

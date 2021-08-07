@@ -54,12 +54,12 @@ $endDate = $item["end_date"];
                                     if ($key == 0) {
                                 ?>
                                         <div class="carousel-item active">
-                                            <img src="../itemPicture/<?php echo $picture["pictureName"]; ?>" height="500">
+                                            <img src="../itemPicture/<?php echo $picture["pictureName"]; ?>" class="img-responsive" width="100%" max-width="500px">
                                         </div>
                                     <?php } else {
                                     ?>
                                         <div class="carousel-item">
-                                            <img src="../itemPicture/<?= $picture["pictureName"] ?>" height="500" width="500">
+                                            <img src="../itemPicture/<?= $picture["pictureName"] ?>" class="img-responsive" width="100%" max-width="500px">
                                         </div>
                             <?php
                                     }
@@ -116,36 +116,39 @@ $endDate = $item["end_date"];
                             echo "0";
                         ?>
                     </h1>
-                    <div class="row align-items-stretch mb-4">
-                        <div class="col-sm-7 pr-sm-0">
-                            <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray mr-4 no-select text-nowrap">Price: RM</span>
-                                <div class="quantity">
-                                    <div>
-                                        <form action="#" class="bidding-area">
-                                            <input type="hidden" name="insertBid">
-                                            <input type="hidden" name="bidderID" id="bidderID" value="<?= $_SESSION["user"]["id"] ?>">
-                                            <input type="hidden" name="itemID" id="itemID" value="<?= $itemID ?>">
-                                            <input type="text" class="form-control border-0 shadow-0 p-0" style="width:150px" name="bidPrice" id="bidPrice">
-                                            <div id="bidPrice_error_msg" data-toggle="tooltip" data-placement="bottom" title="Number Only"></div>
-                                        </form>
+                    <?php if ($item["sellerID"] != $_SESSION["user"]["id"]) { ?>
+                        <div class="row align-items-stretch mb-4">
+                            <div class="col-sm-7 pr-sm-0">
+                                <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray mr-4 no-select text-nowrap">Price: RM</span>
+                                    <div class="quantity">
+                                        <div>
+                                            <form action="#" class="bidding-area">
+                                                <input type="hidden" name="insertBid">
+                                                <input type="hidden" name="bidderID" id="bidderID" value="<?= $_SESSION["user"]["id"] ?>">
+                                                <input type="hidden" name="itemID" id="itemID" value="<?= $itemID ?>">
+                                                <input type="text" class="form-control border-0 shadow-0 p-0" style="width:150px" name="bidPrice" id="bidPrice">
+                                                <div id="bidPrice_error_msg" data-toggle="tooltip" data-placement="bottom" title="Number Only"></div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-5 pl-sm-0"><button class="btn btn-primary btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0 text-uppercase" id="bidButton" disabled>Bid</button></div>
                         </div>
-                        <div class="col-sm-5 pl-sm-0"><button class="btn btn-primary btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0 text-uppercase" id="bidButton" disabled>Bid</button></div>
-                    </div>
-                    <?php
-                    $favourite = mysqli_query($conn, "SELECT * FROM `favourite` WHERE itemID =" . $itemID . " AND userID = " . $_SESSION["user"]["id"] . "");
-                    if (mysqli_num_rows($favourite) > 0) {
-                    ?>
-                        <span id="favourite"><i class="fa fa-heart" aria-hidden="true"></i> Add to wish list </span>
-                    <?php } else { ?>
-                        <span id="favourite" style="cursor:pointer"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to wish list </span>
-                    <?php
-                    }
-                    ?>
-                    <br>
-                    <a href="reportProblem.php?itemID=<?= $itemID ?>" onclick="return confirm('Are you sure you want to report this item?')"><i class="fas fa-exclamation-circle"></i> Report Item</a>
+                        <?php
+                        $favourite = mysqli_query($conn, "SELECT * FROM `favourite` WHERE itemID =" . $itemID . " AND userID = " . $_SESSION["user"]["id"] . "");
+                        if (mysqli_num_rows($favourite) > 0) {
+                        ?>
+                            <span id="favourite" class="liked" style="color:red"><i class="fa fa-heart" aria-hidden="true"></i> Add to wish list </span>
+                        <?php } else { ?>
+                            <span id="favourite" style="cursor:pointer;color:red"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to wish list </span>
+                        <?php
+                        }
+                        ?>
+                        <br>
+                        <a href="reportProblem.php?itemID=<?= $itemID ?>" onclick="return confirm('Are you sure you want to report this item?')"><i class="fas fa-exclamation-circle"></i> Report Item</a>
+                    <?php } ?>
+
                     <br>
                     <hr><br>
                     <ul class="list-unstyled small d-inline-block">
@@ -185,27 +188,29 @@ $endDate = $item["end_date"];
                         $seller = $sql->fetch_array();
                         ?>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-sm-3 text-center">
                                 <img src="../profilePicture/<?= $seller["profile_picture"] ?>" class="sellerImage whiteMargin">
                             </div>
-                            <div class="col-9">
+                            <div class="col-sm-9 text-center text-sm-left">
                                 <h4 class=""><?= $seller["firstName"] . " " . $seller["lastName"] ?></h4>
-                                <div class="m-1">
-                                    <?php
-                                    $favourite = mysqli_query($conn, "SELECT * FROM `follow` WHERE sellerID =" . $item["sellerID"] . " AND followerID = " . $_SESSION["user"]["id"] . "");
-                                    if (mysqli_num_rows($favourite) > 0) {
-                                    ?>
-                                        <span id="heart" class="liked"><i class="fa fa-heart" aria-hidden="true"></i> Follow </span>
-                                    <?php } else { ?>
-                                        <span id="heart" style="cursor:pointer"><i class="fa fa-heart-o" aria-hidden="true"></i> Follow </span>
-                                    <?php
-                                    }
-                                    ?>
-                                    <a href="reportProblem.php?sellerID=<?= $seller["userID"] ?>" onclick="return confirm('Are you sure you want to report this seller?')"><i class="fas fa-exclamation-circle"></i> Report Seller</a>
+                                <?php if ($item["sellerID"] != $_SESSION["user"]["id"]) { ?>
+                                    <div class="m-1">
+                                        <?php
+                                        $favourite = mysqli_query($conn, "SELECT * FROM `follow` WHERE sellerID =" . $item["sellerID"] . " AND followerID = " . $_SESSION["user"]["id"] . "");
+                                        if (mysqli_num_rows($favourite) > 0) {
+                                        ?>
+                                            <span id="heart" class="liked" style="color:red"><i class="fa fa-heart" aria-hidden="true"></i> Follow </span>
+                                        <?php } else { ?>
+                                            <span id="heart" style="cursor:pointer;color:red"><i class="fa fa-heart-o" aria-hidden="true"></i> Follow </span>
+                                        <?php
+                                        }
+                                        ?>
+                                        <a href="reportProblem.php?sellerID=<?= $seller["userID"] ?>" onclick="return confirm('Are you sure you want to report this seller?')"><i class="fas fa-exclamation-circle"></i> Report Seller</a>
 
-                                </div>
-                                <a href="chat.php?sellerID=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase" disabled>Chat Now</a>
-                                <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary text-uppercase">View Shop</a>
+                                    </div>
+                                    <a href="chat.php?sellerID=<?= $seller["userID"] ?>" class="btn btn-primary" disabled>Chat Now</a>
+                                    <a href="shop.php?id=<?= $seller["userID"] ?>" class="btn btn-primary">View Shop</a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -303,6 +308,8 @@ $endDate = $item["end_date"];
         function countdown() {
             const newYearsDate = new Date("<?= $endDate ?>");
             const currentDate = new Date();
+
+            newYearsDate.setHours(newYearsDate.getHours() - 8);
 
             const totalSeconds = (newYearsDate - currentDate) / 1000;
             const minutes = Math.floor(totalSeconds / 60) % 60;

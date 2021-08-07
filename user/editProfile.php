@@ -51,41 +51,35 @@ $row = $sql->fetch_array();
                                     <div>
                                         <div>
                                             <form action="profileManager.php" method="post" enctype="multipart/form-data" onsubmit="return checkProfile(this)" class="needs-validation" novalidate>
-                                                <table style="margin:0 auto;">
-                                                    <tr style="height: 50px;">
-                                                        <td style="width:300px">
-                                                            <h3>First Name: </h3>
-                                                        </td>
-                                                        <td style="width:300px">
-                                                            <input type="text" id="firstName" class="form-control" name="firstName" placeholder="Enter Name" value="<?= $row["firstName"] ?>" maxlength="30" required>
-                                                            <div class="invalid-feedback">
-                                                                Please enter your first name
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr style="height: 50px;">
-                                                        <td style="width:300px">
-                                                            <h3>Last Name: </h3>
-                                                        </td>
-                                                        <td style="width:300px">
-                                                            <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Enter Name" value="<?= $row["lastName"] ?>" maxlength="30" required>
-                                                            <div class="invalid-feedback">
-                                                                Please enter your last name
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr style="height: 50px;">
-                                                        <td>
-                                                            <h3>Phone Number: <span style="color:red" id="phone_error_msg"></span></h3>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" name="phoneNumber" id="phoneNumber" value="<?= $_SESSION['user']['phoneNumber'] ?>" class="form-control" pattern=".{10,13}" maxlength="13" placeholder="Enter Phone Number" required>
-                                                            <div class="invalid-feedback">
-                                                                Please enter your phone number
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                <div class="row">
+                                                    <div class="col-sm-6 text-center text-sm-right">
+                                                        <p class="h3">First Name: </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-center text-sm-left">
+                                                        <input type="text" id="firstName" class="form-control" name="firstName" placeholder="Enter Name" style="max-width:300px" value="<?= $row["firstName"] ?>" maxlength="30" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter your first name
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-center text-sm-right">
+                                                        <p class="h3">Last Name: </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-center text-sm-left">
+                                                        <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Enter Name" style="max-width:300px" value="<?= $row["lastName"] ?>" maxlength="30" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter your last name
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 text-center text-sm-right">
+                                                        <p class="h3">Phone Number: </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-center text-sm-left">
+                                                        <input type="text" name="phoneNumber" id="phoneNumber" value="<?= $_SESSION['user']['phoneNumber'] ?>" style="max-width:300px" class="form-control" pattern=".{10,13}" maxlength="13" placeholder="Enter Phone Number" required>
+                                                        <div class="invalid-feedback">
+                                                            Please enter your phone number
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <br>
                                                 <div class="text-center">
                                                     <input type="submit" name="editProfile" value="Save Profile" class="btn btn-primary ">

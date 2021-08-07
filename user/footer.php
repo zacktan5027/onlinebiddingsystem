@@ -8,12 +8,12 @@
                          <p>We are a service provider for people who want to sell and buy item on online through bididng. </p>
 
                          <ul class="list-inline footer-socials mt-4">
-                             <li class="list-inline-item"><a href=""><i class="ti-facebook mr-2"></i></a></li>
-                             <li class="list-inline-item"><a href=""><i class="ti-twitter mr-2 "></i></a>
+                             <li class="list-inline-item"><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                             <li class="list-inline-item"><a href=""><i class="fab fa-twitter-square"></i></a>
                              </li>
-                             <li class="list-inline-item"><a href=""><i class="ti-github mr-2 "></i></a>
+                             <li class="list-inline-item"><a href=""><i class="fab fa-github-square"></i></a>
                              </li>
-                             <li class="list-inline-item"><a href=""><i class="ti-dribbble mr-2 "></i></a></li>
+                             <li class="list-inline-item"><a href=""><i class="fab fa-instagram-square"></i></a></li>
                          </ul>
                      </div>
                  </div>

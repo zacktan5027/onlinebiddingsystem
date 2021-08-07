@@ -41,52 +41,45 @@ require_once "../include/conn.php";
                                 <div class="text-center">
                                     <img class="rounded-circle border border-dark" src="../profilePicture/<?= $user["profile_picture"] ?>" style="width:200px;height:200px" alt=""><br><br>
                                 </div>
-                                <div class="m-3">
-                                    <table style="margin: auto;">
-                                        <tr style="height: 50px;">
-                                            <td style="width:300px">
-                                                <h3>First Name: </h3>
-                                            </td>
-                                            <td style="width:300px">
-                                                <span><?= $user['firstName'] ?></span>
-                                            </td>
-                                        </tr>
-                                        <tr style="height: 50px;">
-                                            <td style="width:300px">
-                                                <h3>Last Name: </h3>
-                                            </td>
-                                            <td style="width:300px">
-                                                <span><?= $user['lastName'] ?></span>
-                                            </td>
-                                        </tr>
-                                        <tr style="height: 50px;">
-                                            <td>
-                                                <h3>Phone Number: </h3>
-                                            </td>
-                                            <td>
-                                                <span><?= $user['phone_number'] ?></span><br>
-                                            </td>
-                                        </tr>
-                                        <tr style="height: 50px;">
-                                            <td>
-                                                <h3>Email: </h3>
-                                            </td>
-                                            <td>
-                                                <span><?= $user['email'] ?></span><br>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <div class="row">
+                                    <div class="col-sm-6 text-center text-sm-right">
+                                        <p class="h3">First Name: </p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-left">
+                                        <p class="m-2"><?= $user['firstName'] ?></p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-right">
+                                        <p class="h3">Last Name: </p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-left">
+                                        <p class="m-2"><?= $user['lastName'] ?></p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-right">
+                                        <p class="h3">Phone Number: </p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-left">
+                                        <p class="m-2"><?= $user['phone_number'] ?></p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-right">
+                                        <p class="h3">Email: </p>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-left">
+                                        <p class="m-2"><?= $user['email'] ?></p>
+                                    </div>
                                 </div>
 
-                                <div class="d-flex justify-content-center">
-                                    <form action="passwordManager.php" method="POST">
-                                        <input type="submit" value="Change Password" name="changePassword" id="changePassword" class="btn btn-primary m-1 text-uppercase">
-                                    </form>
-                                    <form action="editProfile.php" method="POST">
-                                        <input type="submit" class="btn btn-primary m-1 text-uppercase" name="editProfile" value="edit Profile">
-                                    </form>
+                                <div class="row">
+                                    <div class="col-sm-6 text-center text-sm-right">
+                                        <form action="passwordManager.php" method="POST">
+                                            <input type="submit" value="Change Password" name="changePassword" id="changePassword" class="btn btn-primary m-1 text-uppercase">
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-6 text-center text-sm-left">
+                                        <form action="editProfile.php" method="POST">
+                                            <input type="submit" class="btn btn-primary m-1 text-uppercase" name="editProfile" value="edit Profile">
+                                        </form>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
