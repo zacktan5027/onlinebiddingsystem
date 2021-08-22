@@ -46,7 +46,7 @@ $endDate = $item["end_date"];
                             if (empty($pictures)) {
                             ?>
                                 <div class="carousel-item active">
-                                    <img src="../itemPicture/noImage.png" height="500" width="500">
+                                    <img src="../itemPicture/noImage.png" class="img-responsive" width="100%" max-width="500px">
                                 </div>
                                 <?php
                             } else {
