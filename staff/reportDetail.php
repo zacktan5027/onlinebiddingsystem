@@ -50,7 +50,7 @@ $row = mysqli_fetch_array($sql);
                         </div>
                         <div class="card-body">
                             <?php
-                            $sql = mysqli_query($conn, "SELECT * FROM user WHERE userID = {$row["userID"]}");
+                            $sql = mysqli_query($conn, "SELECT * FROM user WHERE userID = {$row["sellerID"]}");
                             $seller = mysqli_fetch_array($sql);
                             ?>
                             <?php if ($seller["verification_status"] == "active") {
